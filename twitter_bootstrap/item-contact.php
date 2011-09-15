@@ -12,14 +12,10 @@
                 <?php twitter_show_flash_message() ; ?>
             </div>
             <div class="contact well">
-                <form action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" onsubmit="return doContact();" >
+                <form action="<?php echo osc_base_url(true); ?>" method="post" name="contact_form" onsubmit="return doItemContact();" >
                     <?php ContactForm::primary_input_hidden() ; ?>
                     <?php ContactForm::action_hidden() ; ?>
                     <?php ContactForm::page_hidden() ; ?>
-                    <?php if( osc_is_web_user_logged_in() ) { ?>
-                        <input type="hidden" name="yourName" value="<?php echo osc_logged_user_name() ; ?>" />
-                        <input type="hidden" name="yourEmail" value="<?php echo osc_logged_user_email() ; ?>" />
-                    <?php } ?>
                     <fieldset>
                         <legend><?php _e('Contact seller', 'twitter_bootstrap') ; ?></legend>
                         <div class="clearfix">
@@ -38,30 +34,29 @@
                                 </span>
                             </div>
                         </div>
-                        <?php if( !osc_is_web_user_logged_in() ) { ?>
                         <div class="clearfix">
-                            <label for="yourName"><?php _e('Your name', 'twitter_bootstrap') ; ?> *</label>
+                            <label for="contact-yourName"><?php _e('Your name', 'twitter_bootstrap') ; ?> *</label>
                             <div class="input">
-                                <input class="xlarge" type="text" value="" name="yourName" id="yourName">
+                                <input class="xlarge contact-yourName" type="text" value="<?php echo osc_logged_user_name() ; ?>" name="yourName" id="contact-yourName">
                             </div>
                         </div>
                         <div class="clearfix">
-                            <label for="yourEmail"><?php _e('Your e-mail', 'twitter_bootstrap') ; ?> *</label>
+                            <label for="contact-yourEmail"><?php _e('Your e-mail', 'twitter_bootstrap') ; ?> *</label>
                             <div class="input">
-                                <input class="xlarge" type="text" value="" name="yourEmail" id="yourEmail">
+                                <input class="xlarge contact-yourEmail" type="text" value="<?php echo osc_logged_user_email() ; ?>" name="yourEmail" id="contact-yourEmail">
                             </div>
                         </div>
                         <?php } ?>
                         <div class="clearfix">
-                            <label for="phoneNumber"><?php _e('Phone number', 'twitter_bootstrap') ; ?> *</label>
+                            <label for="contact-phoneNumber"><?php _e('Phone number', 'twitter_bootstrap') ; ?> *</label>
                             <div class="input">
-                                <input class="xlarge" type="text" value="" name="phoneNumber" id="phoneNumber">
+                                <input class="xlarge contact-phoneNumber" type="text" value="" name="phoneNumber" id="contact-phoneNumber">
                             </div>
                         </div>
                         <div class="clearfix">
-                            <label for="message"><?php _e('Message', 'twitter_bootstrap') ; ?> *</label>
+                            <label for="contact-message"><?php _e('Message', 'twitter_bootstrap') ; ?> *</label>
                             <div class="input">
-                                <textarea class="xlarge" id="message" name="message" rows="6"></textarea>
+                                <textarea class="xlarge contact-message" id="contact-message" name="message" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="clearfix">

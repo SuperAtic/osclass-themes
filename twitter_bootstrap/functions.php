@@ -56,6 +56,32 @@
         View::newInstance()->_erase('list_regions') ;
     }
 
+    if( !function_exists('item_detail_location') ) {
+        /*
+         * @return array the list of location: starting with the address and finishing with the country
+         */
+        function item_detail_location() {
+            $location = array() ;
+            if( osc_item_address() != '' ) {
+                $location[] = osc_item_address() ;
+            }
+            if( osc_item_city_area() != '' ) {
+                $location[] = osc_item_city_area() ;
+            }
+            if( osc_item_city() != '' ) {
+                $location[] = osc_item_city() ;
+            }
+            if( osc_item_region() != '' ) {
+                $location[] = osc_item_region() ;
+            }
+            if( osc_item_country() != '' ) {
+                $location[] = osc_item_country() ;
+            }
+            
+            return $location ;
+        }
+    }
+
     if( !function_exists('twitter_show_flash_message') ) {
         function twitter_show_flash_message() {
             $message = Session::newInstance()->_getMessage('pubMessages') ;

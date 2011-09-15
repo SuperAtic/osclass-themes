@@ -1,5 +1,7 @@
 /* Custom CSS */
+.margin-top-10 { margin-top: 10px; }
 .container.margin-top-10 { margin-top: 10px; }
+p.no-margin { margin: 0px; }
 /* HEADER */
 div.topbar-wrapper { position: relative; height: 40px; margin: 5px 0 0; }
 div.topbar-wrapper div.topbar { position: absolute; margin: 0 -20px; }
@@ -48,7 +50,8 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 .container.user .item-alert h6 { line-height: 8px; }
 /* ITEM */
 .modal form { padding-left: 0px; margin-bottom: 0px; }
-.item-contact.modal { width:320px; margin: -280px 0 0 -120px; }
+.item-contact.modal, .item-sendfriend.modal { width:320px; margin: -280px 0 0 -120px; }
 .item-contact input.xlarge, .item-contact textarea.xlarge { width: 260px; }
 .item-detail h1 { font-size: 20px; border-bottom: 1px dotted #CCCCCC; }
 .item-detail h1 small { font-size: 16px; }
+.item-detail .photos a img { text-decoration: none; }

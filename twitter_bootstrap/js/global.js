@@ -34,6 +34,10 @@ $(document).ready(function(){
     $(".item-contact .close").bind("click", function(e) {
        $(this).parent().parent().parent().fadeOut('slow'); 
     });
+
+    $(".item-sendfriend .close").bind("click", function(e) {
+       $(this).parent().parent().parent().fadeOut('slow'); 
+    });
     
     // Select with choosen
     $(".chzn-select").chosen();

@@ -1,0 +1,15 @@
+- alert-form.php
+- item-edit.php
+- item-post.php
+- item-send-friend.php
+- item.php (started)
+    - reCaptcha (issues because we have multiple forms)
+    - comments
+- search.php
+- search_gallery.php
+- search_list.php
+
+- change screenshot
+- TEST:
+     - All the forms
+     - Different browsers
