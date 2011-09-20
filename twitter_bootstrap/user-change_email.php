@@ -12,7 +12,7 @@
                 <div class="span16 columns">
                     <?php twitter_user_menu() ; ?>
                     <?php twitter_show_flash_message() ; ?>
-                    <form action="<?php echo osc_base_url(true) ; ?>" method="post" onsubmit="return doSubmit() ;">
+                    <form action="<?php echo osc_base_url(true) ; ?>" method="post" onsubmit="return doUserChangeEmail() ;">
                         <input type="hidden" name="page" value="user" />
                         <input type="hidden" name="action" value="change_email_post" />
                         <fieldset>

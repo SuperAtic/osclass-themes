@@ -51,7 +51,16 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 /* ITEM */
 .modal form { padding-left: 0px; margin-bottom: 0px; }
 .item-contact.modal, .item-sendfriend.modal { width:320px; margin: -280px 0 0 -120px; }
-.item-contact input.xlarge, .item-contact textarea.xlarge { width: 260px; }
+.item-contact input.xlarge, .item-sendfriend input.xlarge, .item-contact textarea.xlarge, .item-sendfriend textarea.xlarge { width: 260px; }
 .item-detail h1 { font-size: 20px; border-bottom: 1px dotted #CCCCCC; }
 .item-detail h1 small { font-size: 16px; }
 .item-detail .photos a img { text-decoration: none; }
+.item-detail .comments h2 { border-bottom: 1px dotted #404040; margin-bottom: 12px; }
+.item-detail .comments .list-comments { border-bottom: 1px dotted #404040; }
+.item-detail .comments .list-comments .comment p { background: no-repeat url('../images/comments_quotes.png'); padding-left: 50px; }
+.item-detail .comments .list-comments .pagination ul { float: right; }
+.item-detail .comments form { margin-bottom: 0px; }
+.item-detail .comments form fieldset legend { padding-top: 12px; }
+.item-detail .comments form fieldset, .item-detail .comments form fieldset .actions { padding-bottom: 0px; }
+.item-detail .comments .input textarea.xlarge  { width: 400px; }
+

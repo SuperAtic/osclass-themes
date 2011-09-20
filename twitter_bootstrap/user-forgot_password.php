@@ -12,7 +12,7 @@
                 <?php twitter_show_flash_message() ; ?>
             </div>
             <div class="contact well">
-                 <form action="<?php echo osc_base_url(true); ?>" method="post" onsubmit="return doSubmit() ;">
+                 <form action="<?php echo osc_base_url(true); ?>" method="post" onsubmit="return doUserForgotPassword() ;">
                     <input type="hidden" name="page" value="login" />
                     <input type="hidden" name="action" value="forgot_post" />
                     <input type="hidden" name="userId" value="<?php echo Params::getParam('userId'); ?>" />

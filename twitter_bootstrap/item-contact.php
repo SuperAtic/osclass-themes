@@ -19,15 +19,15 @@
                     <fieldset>
                         <legend><?php _e('Contact seller', 'twitter_bootstrap') ; ?></legend>
                         <div class="clearfix">
-                            <label><?php _e('Item', 'twitter_bootstrap') ; ?></label>
+                            <label><?php _e('To', 'twitter_bootstrap') ; ?></label>
                             <div class="input">
                                 <span class="inline-help padding-top">
-                                    <a href="<?php echo osc_item_url(); ?>"><?php echo osc_item_title() ; ?></a>
+                                    <?php echo osc_item_contact_name() ; ?>
                                 </span>
                             </div>
                         </div>
                         <div class="clearfix">
-                            <label><?php _e('Subject', 'twitter_bootstrap') ; ?></label>
+                            <label><?php _e('Item', 'twitter_bootstrap') ; ?></label>
                             <div class="input">
                                 <span class="inline-help padding-top">
                                     <a href="<?php echo osc_item_url(); ?>"><?php echo osc_item_title() ; ?></a>
@@ -46,7 +46,6 @@
                                 <input class="xlarge contact-yourEmail" type="text" value="<?php echo osc_logged_user_email() ; ?>" name="yourEmail" id="contact-yourEmail">
                             </div>
                         </div>
-                        <?php } ?>
                         <div class="clearfix">
                             <label for="contact-phoneNumber"><?php _e('Phone number', 'twitter_bootstrap') ; ?> *</label>
                             <div class="input">

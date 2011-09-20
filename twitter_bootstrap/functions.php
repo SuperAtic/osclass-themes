@@ -391,5 +391,41 @@ JAVASCRIPT;
             return $links;
         }
      }
+     
+     function twitter_user_item_pagination() {
+         $params = array('total'              => (int) View::newInstance()->_get('list_total_pages'),
+                         'selected'           => (int) View::newInstance()->_get('list_page'),
+                         'class_first'        => '',
+                         'class_last'         => '',
+                         'class_prev'         => 'prev',
+                         'class_next'         => 'next',
+                         'delimiter'          => '',
+                         'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
+                         'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
+                         'class_selected'     => 'active',
+                         'class_non_selected' => '',
+                         'force_limits'       => false,
+                         'url'                => osc_user_list_items_url('{PAGE}')) ;
+         $pagination = new TwitterPagination($params) ;
+         return $pagination->doPagination() ;
+     }
+     
+     function twitter_comments_item_pagination() {
+         $params = array('total'              => ceil( osc_item_total_comments()/osc_comments_per_page() ),
+                         'selected'           => osc_item_comments_page(),
+                         'class_first'        => '',
+                         'class_last'         => '',
+                         'class_prev'         => 'prev',
+                         'class_next'         => 'next',
+                         'delimiter'          => '',
+                         'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
+                         'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
+                         'class_selected'     => 'active',
+                         'class_non_selected' => '',
+                         'force_limits'       => false,
+                         'url'                => osc_item_comments_url('{PAGE}')) ;
+         $pagination = new TwitterPagination($params) ;
+         return $pagination->doPagination() ;
+     }
 
 ?>

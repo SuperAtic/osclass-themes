@@ -30,19 +30,7 @@ $(document).ready(function(){
     });
 });
 
-function text_validation (element) {
-    if( $(element).val().length == 0 ) {
-        if ( $(element).parent().parent().hasClass('error') == false ) {
-            $(element).parent().parent().addClass('error') ;
-            var span = $("<span>").attr('class', 'help-inline').html(text_error_required);
-            $(element).parent().append(span) ;
-        }
-        return false;
-    }
-    return true;
-}
-
-function doSubmit() {
+function doUserChangePassword() {
     var error = false;
     if ( !text_validation($("#password")) ) {
         error =  true;

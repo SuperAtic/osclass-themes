@@ -12,7 +12,7 @@
                 <?php twitter_show_flash_message() ; ?>
             </div>
             <div class="contact well">
-                <form name="register" id="register" action="<?php echo osc_base_url(true) ; ?>" method="post" onsubmit="return doSubmit();" >
+                <form name="register" id="register" action="<?php echo osc_base_url(true) ; ?>" method="post" onsubmit="return doUserRegister();" >
                     <input type="hidden" name="page" value="register" />
                     <input type="hidden" name="action" value="register_post" />
                     <fieldset>

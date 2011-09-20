@@ -1,7 +1,10 @@
 <?php
-    $is_expired     = osc_item_is_expired () ;
-    $is_user        = osc_logged_user_id() != osc_item_user_id() ;
-    $is_can_contact = osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ;
+    $is_expired          = osc_item_is_expired () ;
+    $is_user             = osc_logged_user_id() != osc_item_user_id() ;
+    $is_can_contact      = osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ;
+    
+    $is_comments_enabled = osc_comments_enabled() ;
+    $is_can_comment      = osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ;
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
@@ -26,9 +29,11 @@
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div class="container margin-top-10">
             <?php twitter_show_flash_message() ; ?>
+            <?php breadcrumbs(); ?>
         </div>
         <div class="container item-detail">
             <div class="row">
+                <!-- item detail -->
                 <div class="span16 columns">
                     <h1><?php if( osc_price_enabled_at_items() ) { ?><small><?php echo osc_item_formated_price() ; ?></small> <?php } ?><?php echo osc_item_title(); ?></h1>
                     <p class="no-margin"><?php printf(__('<strong>Published date:</strong> %s %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ), date(osc_time_format(), strtotime(osc_item_pub_date())) ) ; ?></p>
@@ -67,6 +72,80 @@
                     </p>
                     <?php osc_run_hook('location') ; ?>
                 </div>
+                <!-- item detail end -->
+                <?php if( $is_comments_enabled ) { ?>
+                <!-- comments -->
+                <div class="span16 columns comments well">
+                    <?php if( $is_can_comment && (osc_item_total_comments() > 0) ) { ?>
+                    <h2><?php _e('Comments', 'twitter_bootstrap'); ?></h2>
+                    <!-- list comments -->
+                    <div class="list-comments">
+                        <?php while ( osc_has_item_comments() ) { ?>
+                            <div class="comment">
+                                <h3><?php echo osc_comment_title() ; ?> <small><em><?php _e("by", 'twitter_bootstrap') ; ?> <?php echo osc_comment_author_name() ; ?></small></em></h3>
+                                <p><?php echo osc_comment_body() ; ?> </p>
+                                <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
+                                <p>
+                                    <a rel="nofollow" href="<?php echo osc_delete_comment_url() ; ?>" title="<?php _e('Delete your comment', 'twitter_bootstrap') ; ?>"><?php _e('Delete', 'twitter_bootstrap') ; ?></a>
+                                </p>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+                        <?php if( !(osc_comments_per_page() == 0) || (osc_item_comments_page() === 'all') ) { ?>
+                        <div class="pagination">
+                            <ul>
+                                <?php echo twitter_comments_item_pagination() ; ?>
+                            </ul>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <!-- list comments end -->
+                    <?php } ?>
+                    <!-- comment form -->
+                    <form action="<?php echo osc_base_url(true); ?>" method="post" name="comment_form" onsubmit="return doComment();" >
+                        <input type="hidden" name="action" value="add_comment" />
+                        <input type="hidden" name="page" value="item" />
+                        <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
+                        <fieldset>
+                            <legend><?php _e('Leave your comment', 'twitter_bootstrap') ; ?></legend>
+                            <div class="clearfix">
+                                <label for="comment-authorName"><?php _e('Your name', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <input class="xlarge comment-authorName" type="text" value="<?php echo osc_logged_user_name() ; ?>" name="authorName" id="comment-authorName">
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <label for="comment-authorEmail"><?php _e('Your e-mail', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <input class="xlarge comment-authorEmail" type="text" value="<?php echo osc_logged_user_email() ; ?>" name="authorEmail" id="comment-authorEmail">
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <label for="comment-title"><?php _e('Title', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <input class="xlarge comment-title" type="text" value="" name="title" id="comment-title">
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <label for="comment-body"><?php _e('Comment', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <textarea class="xlarge comment-body" id="comment-body" name="body" rows="6"></textarea>
+                                </div>
+                            </div>
+                            <?php /*
+                            <div class="clearfix">
+                                <?php osc_show_recaptcha(); ?>
+                            </div>
+                            */ ?>
+                            <div class="actions">
+                                <button class="btn" type="submit"><?php _e('Post comment', 'twitter_bootstrap') ; ?></button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <!-- comment form end -->
+                </div>
+                <!-- comments end -->
+                <?php } ?>
             </div>
         </div>
         <?php if ( !$is_expired && $is_user && $is_can_contact ) { ?>
@@ -83,29 +162,34 @@
                 <div class="modal-body">
                     <?php osc_prepare_user_info() ; ?>
                     <div class="clearfix">
-                        <label for="yourName"><?php _e('Your name', 'twitter_bootstrap') ; ?></label>
+                        <label for="contact-yourName"><?php _e('Your name', 'twitter_bootstrap') ; ?></label>
                         <div class="input">
-                            <input class="xlarge" id="yourName" name="yourName" type="text" value="<?php echo osc_logged_user_name(); ?>">
+                            <input class="xlarge contact-yourName" id="contact-yourName" name="yourName" type="text" value="<?php echo osc_logged_user_name(); ?>">
                         </div>
                     </div>
                     <div class="clearfix">
-                        <label for="yourEmail"><?php _e('Your e-mail', 'twitter_bootstrap') ; ?></label>
+                        <label for="contact-yourEmail"><?php _e('Your e-mail', 'twitter_bootstrap') ; ?></label>
                         <div class="input">
-                            <input class="xlarge" id="yourEmail" name="yourEmail" type="text" value="<?php echo osc_logged_user_email();?>">
+                            <input class="xlarge contact-yourEmail" id="contact-yourEmail" name="yourEmail" type="text" value="<?php echo osc_logged_user_email();?>">
                         </div>
                     </div>
                     <div class="clearfix">
-                        <label for="phoneNumber"><?php _e('Phone number', 'twitter_bootstrap') ; ?></label>
+                        <label for="contact-phoneNumber"><?php _e('Phone number', 'twitter_bootstrap') ; ?></label>
                         <div class="input">
-                            <input class="xlarge" id="phoneNumber" name="phoneNumber" type="text" value="">
+                            <input class="xlarge contact-phoneNumber" id="contact-phoneNumber" name="phoneNumber" type="text" value="">
                         </div>
                     </div>
                     <div class="clearfix">
-                        <label for="message"><?php _e('Message', 'twitter_bootstrap') ; ?></label>
+                        <label for="contact-message"><?php _e('Message', 'twitter_bootstrap') ; ?></label>
                         <div class="input">
-                            <textarea class="xlarge" id="message" name="message" rows="6"></textarea>
+                            <textarea class="xlarge contact-message" id="contact-message" name="message" rows="6"></textarea>
                         </div>
                     </div>
+                    <?php /*
+                    <div class="clearfix">
+                        <?php osc_show_recaptcha(); ?>
+                    </div>
+                    */ ?>
                 </div>
                 <div class="modal-footer">
                     <button class="btn primary" type="submit"><?php _e('Send', 'twitter_bootstrap') ; ?></button>
@@ -151,11 +235,16 @@
                         </div>
                     </div>
                     <div class="clearfix">
-                        <label for="message"><?php _e('Message', 'twitter_bootstrap') ; ?></label>
+                        <label for="sendfriend-message"><?php _e('Message', 'twitter_bootstrap') ; ?></label>
                         <div class="input">
-                            <textarea class="xlarge" id="message" name="message" rows="6"></textarea>
+                            <textarea class="xlarge sendfriend-message" id="sendfriend-message" name="message" rows="6"></textarea>
                         </div>
                     </div>
+                    <?php /*
+                    <div class="clearfix">
+                        <?php osc_show_recaptcha(); ?>
+                    </div>
+                    */ ?>
                 </div>
                 <div class="modal-footer">
                     <button class="btn primary" type="submit"><?php _e('Send', 'twitter_bootstrap') ; ?></button>
@@ -170,6 +259,7 @@
                 $(".item-contact.modal").hide();
 
                 $(".item-contact-button").click(function() {
+                    $(".item-sendfriend.modal").hide();
                     $(".item-contact.modal").fadeIn('slow');
                 }) ;
 
@@ -181,6 +271,7 @@
                 $(".item-sendfriend.modal").hide();
                 
                 $(".item-share-button").click(function() {
+                    $(".item-contact.modal").hide();
                     $(".item-sendfriend.modal").fadeIn('slow');
                 }) ;
 
@@ -188,14 +279,22 @@
                     $(".item-sendfriend.modal").fadeOut('slow');
                 }) ;
                 /* js item-sendfriend end */
+
+                $(document).keyup(function(e) { 
+                    if (e.keyCode == 27) { 
+                        $(".item-contact.modal").fadeOut('slow');
+                        $(".item-sendfriend.modal").fadeOut('slow');
+                    }
+                });
             }) ;
         </script>
         <script type="text/javascript">
-            var text_error_required = '<?php _e('This field is required', 'twitter_bootstrap') ; ?>' ;
-            var text_valid_email    = '<?php _e('Enter a valid e-mail address', 'twitter_bootstrap') ; ?>' ;
+            var text_error_required = '' ;
+            var text_valid_email    = '' ;
         </script>
         <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('item_contact.js') ; ?>"></script>
         <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('item_sendfriend.js') ; ?>"></script>
+        <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('item_comment.js') ; ?>"></script>
         <?php osc_current_web_theme_path('footer.php') ; ?>
     </body>
 </html>

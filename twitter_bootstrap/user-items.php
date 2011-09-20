@@ -58,22 +58,7 @@
                 <?php if ( osc_list_total_pages() > 0 ) { ?>
                 <div class="pagination">
                     <ul>
-                <?php
-                    $params = array('total'              => (int) View::newInstance()->_get('list_total_pages'),
-                                    'selected'           => (int) View::newInstance()->_get('list_page'),
-                                    'class_first'        => '',
-                                    'class_last'         => '',
-                                    'class_prev'         => 'prev',
-                                    'class_next'         => 'next',
-                                    'text_prev'          => '&larr; Previous',
-                                    'text_next'          => 'Next &rarr;',
-                                    'class_selected'     => 'active',
-                                    'class_non_selected' => '',
-                                    'force_limits'       => false,
-                                    'url'                => osc_user_list_items_url('{PAGE}')) ;
-                    $pagination = new TwitterPagination($params) ;
-                    echo $pagination->doPagination() ;
-                ?>
+                        <?php echo twitter_user_item_pagination() ; ?>
                     </ul>
                 </div>
                 <?php } ?>

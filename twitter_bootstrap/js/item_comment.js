@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#subject").bind({
+    $("form[name='comment_form'] .comment-authorName").bind({
         "blur": function (e) {
             text_validation($(this));
         },
@@ -9,27 +9,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#message").bind({
-        "blur": function (e) {
-            text_validation($(this));
-        },
-        "focus": function (e) {
-            $(this).parent().parent().removeClass('error') ;
-            $(this).parent().find(".help-inline").remove() ;
-        }
-    });
-
-    $("#yourName").bind({
-        "blur": function (e) {
-            text_validation($(this));
-        },
-        "focus": function (e) {
-            $(this).parent().parent().removeClass('error') ;
-            $(this).parent().find(".help-inline").remove() ;
-        }
-    });
-
-    $("#yourEmail").bind({
+    $("form[name='comment_form'] .comment-authorEmail").bind({
         "blur": function (e) {
             mail_validation($(this));
         },
@@ -38,23 +18,43 @@ $(document).ready(function(){
             $(this).parent().find(".help-inline").remove() ;
         }
     });
+
+    $("form[name='comment_form'] .comment-title").bind({
+        "blur": function (e) {
+            text_validation($(this));
+        },
+        "focus": function (e) {
+            $(this).parent().parent().removeClass('error') ;
+            $(this).parent().find(".help-inline").remove() ;
+        }
+    });
+
+    $("form[name='comment_form'] .comment-body").bind({
+        "blur": function (e) {
+            text_validation($(this));
+        },
+        "focus": function (e) {
+            $(this).parent().parent().removeClass('error') ;
+            $(this).parent().find(".help-inline").remove() ;
+        }
+    });
 });
 
-function doContact() {
+function doComment() {
     var error = false;
-    if ( !text_validation($("#subject")) ) {
+    if ( !text_validation($("form[name='comment_form'] .comment-authorName")) ) {
         error =  true;
     }
 
-    if ( !text_validation($("#message")) ) {
+    if ( !mail_validation($("form[name='comment_form'] .comment-authorEmail")) ) {
         error =  true;
     }
 
-    if ( !text_validation($("#yourName")) ) {
+    if ( !text_validation($("form[name='comment_form'] .comment-title")) ) {
         error =  true;
     }
 
-    if ( !mail_validation($("#yourEmail")) ) {
+    if ( !text_validation($("form[name='comment_form'] .comment-body")) ) {
         error =  true;
     }
 

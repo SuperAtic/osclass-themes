@@ -1,4 +1,4 @@
-        <!-- head start --> 
+        <!-- header --> 
         <div class="container">
             <div class="row login_nav">
                 <ul class="unstyled">
@@ -68,4 +68,4 @@
                 </div><!-- /topbar -->
             </div>
         </div>
-        <!-- head end -->
+        <!-- header end -->
