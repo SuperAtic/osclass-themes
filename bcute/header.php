@@ -45,8 +45,8 @@
         </ul>
         <div id="form_publish">
             <strong class="publish_button"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><?php _e("Publish your ad for free", 'bcute');?></a></strong>
-            <a class="twitter" href="http://www.twitter.com/#"></a>
-            <a class="facebook" href="http://www.facebook.com/#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
         </div>
         <div class="empty"></div>
     </div>
