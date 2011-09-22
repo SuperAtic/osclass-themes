@@ -1,121 +1,146 @@
-<?php
-    /*
-     *      OSCLass – software for creating and publishing online classified
-     *                           advertising platforms
-     *
-     *                        Copyright (C) 2010 OSCLASS
-     *
-     *       This program is free software: you can redistribute it and/or
-     *     modify it under the terms of the GNU Affero General Public License
-     *     as published by the Free Software Foundation, either version 3 of
-     *            the License, or (at your option) any later version.
-     *
-     *     This program is distributed in the hope that it will be useful, but
-     *         WITHOUT ANY WARRANTY; without even the implied warranty of
-     *        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     *             GNU Affero General Public License for more details.
-     *
-     *      You should have received a copy of the GNU Affero General Public
-     * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
-     */
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
+<?php $aLocales = osc_get_locales() ; ?>
+<!DOCTYPE html>
+<html dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()) ; ?>">
     <head>
         <?php osc_current_web_theme_path('head.php') ; ?>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
-
-        <!-- only item-edit.php -->
-        <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('jquery.validate.min.js') ; ?>"></script>
-        <?php ItemForm::location_javascript_new(); ?>
-        <?php if(osc_images_enabled_at_items()) ItemForm::photos_javascript(); ?>
-        <!-- end only item-edit.php -->
+        <script type="text/javascript">
+            twitter_theme.text_select_subcategory = "<?php _e('Select a subcategory...', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.category_selected_id    = "<?php echo item_selected_category_id() ; ?>" ;
+            twitter_theme.subcategory_selected_id = "<?php echo item_selected_subcategory_id() ; ?>" ;
+            twitter_theme.max_number_photos       = <?php echo osc_max_images_per_item() ; ?> ;
+            twitter_theme.photo_remove_text       = "<?php _e('Remove', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.max_images_fields_txt   = "<?php _e('Sorry, you have reached the maximum number of images per ad',  'twitter_bootstrap') ; ?>" ;
+            twitter_theme.country_select_id       = "<?php echo get_country_id((osc_item() != null) ? osc_item() : array()) ; ?>" ;
+            twitter_theme.region_select_id        = "<?php echo get_region_id((osc_item() != null) ? osc_item() : array()) ; ?>" ;
+            twitter_theme.city_select_id          = "<?php echo get_city_id((osc_item() != null) ? osc_item() : array()) ; ?>" ;
+            twitter_theme.ajax_url                = "<?php echo osc_base_url(true) . '?page=ajax' ; ?>" ;
+            twitter_theme.text_select_country     = "<?php _e('Select a country...', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.text_select_region      = "<?php _e('Select a region...', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.text_select_city        = "<?php _e('Select a city...', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.text_no_regions         = "<?php _e('No regions available', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.text_no_cities          = "<?php _e('No cities available', 'twitter_bootstrap') ; ?>" ;
+            twitter_theme.page                    = "edit" ;
+            twitter_theme.item_id                 = "<?php echo osc_item_id() ; ?>" ;
+            twitter_theme.delete_photo_txt        = "<?php _e('This action cannot be undone. Are you sure you want to continue?', 'twitter_bootstrap') ; ?>";
+        </script>
+        <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('bootstrap-tabs.js') ; ?>"></script>
+        <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('item_form.js') ; ?>"></script>
+        <?php item_category_select_js() ; ?>
     </head>
     <body>
-        <div class="container">
-            <?php osc_current_web_theme_path('header.php') ; ?>
-            <div class="content add_item">
-                <h1><strong><?php _e('Update your item', 'modern'); ?></strong></h1>
-                <ul id="error_list"></ul>
-                    <form name="item" action="<?php echo osc_base_url(true)?>" method="post" enctype="multipart/form-data">
-                    <fieldset>
+        <?php osc_current_web_theme_path('header.php') ; ?>
+        <div class="container margin-top-10">
+            <?php twitter_show_flash_message() ; ?>
+        </div>
+        <div class="container item-edit">
+            <div class="row">
+                <div class="span16 columns">
+                    <h1><?php _e('Update your item', 'twitter_bootstrap') ; ?></h1>
+                    <form class="well" name="item" action="<?php echo osc_base_url(true) ; ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="item_edit_post" />
                         <input type="hidden" name="page" value="item" />
-                        <input type="hidden" name="id" value="<?php echo osc_item_id() ;?>" />
-                        <input type="hidden" name="secret" value="<?php echo osc_item_secret() ;?>" />
-                            <div class="box general_info">
-                                <h2><?php _e('General Information', 'modern'); ?></h2>
-                                <div class="row">
-                                    <label><?php _e('Category', 'modern'); ?> *</label>
-                                    <?php ItemForm::category_select(null, null, __('Select a category', 'modern')); ?>
+                        <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
+                        <input type="hidden" name="secret" value="<?php echo osc_item_secret() ; ?>" />
+                        <fieldset>
+                            <!-- category input -->
+                            <div class="clearfix">
+                                <label><?php _e('Category', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <?php item_category_select( __('Select a category...', 'twitter_bootstrap') ) ; ?>
                                 </div>
-                                <div class="row">
-                                    <?php ItemForm::multilanguage_title_description(osc_get_locales()); ?>
-                                </div>
-                                <?php if( osc_price_enabled_at_items() ) { ?>
-                                <div class="row price">
-                                    <label><?php _e('Price', 'modern'); ?></label>
-                                    <?php ItemForm::price_input_text(); ?>
-                                    <?php ItemForm::currency_select(); ?>
-                                </div>
+                            </div>
+                            <!-- category input end -->
+                            <!-- title and description -->
+                            <div class="clearfix">
+                                <?php if( count($aLocales) > 1 ) { ?>
+                                    <?php item_title_description_multilanguage_box(__('Title', 'twitter_bootstrap'), __('Description', 'twitter_bootstrap'), $aLocales) ; ?>
+                                <?php } else { ?>
+                                    <?php item_title_description_box(__('Title', 'twitter_bootstrap'), __('Description', 'twitter_bootstrap'), $aLocales) ; ?>
                                 <?php } ?>
                             </div>
+                            <!-- title and description end -->
+                            <?php if( osc_price_enabled_at_items() ) { ?>
+                                <!-- price -->
+                                <div class="clearfix">
+                                    <label for="price"><?php _e('Price', 'twitter_bootstrap') ; ?></label>
+                                    <div class="input">
+                                        <?php item_price_input( ) ; ?>
+                                        <?php item_currency_select( ) ; ?>
+                                        <span class="help-block">
+                                            <?php _e("<strong>Note:</strong> If you are giving away your item, enter a price of 0. If you don't want to publish the price, leave empty the field", 'twitter_bootstrap') ; ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- price end -->
+                            <?php } ?>
                             <?php if( osc_images_enabled_at_items() ) { ?>
-                            <div class="box photos">
-                                <h2><?php _e('Photos', 'modern'); ?></h2>
-                                <?php ItemForm::photos(); ?>
-                                <div id="photos">
+                                <!-- photo -->
+                                <h3><?php _e('Photos', 'twitter_bootstrap') ; ?></h3>
+                                <div class="clearfix photos">
+                                    <?php 
+                                        $resources = osc_get_item_resources();
+                                        if( $resources != null && is_array($resources) && count($resources) > 0) { ?>
+                                            <ul class="media-grid">
+                                            <?php foreach($resources as $r) { ?>
+                                            <li id="<?php echo $r['pk_i_id'] ; ?>" fkid="<?php echo $r['fk_i_item_id'] ; ?>" name="<?php echo $r['s_name'] ; ?>">
+                                                <a href="javascript://">
+                                                    <img class="thumbnail quimby_search_image" src="<?php echo osc_base_url() . $r['s_path'] . $r['pk_i_id'] . '_thumbnail.' . $r['s_extension'] ; ?>" />
+                                                </a>
+                                                <span>
+                                                    <a class="btn danger" href="javascript:delete_image(<?php echo $r['pk_i_id'] . ", " . $r['fk_i_item_id'] . ", '" . $r['s_name'] . "', '" . Params::getParam('secret') . "'" ; ?>);" class="delete"><?php _e('Delete', 'twitter_bootstrap') ; ?></a>
+                                                </span>
+                                            </li>
+                                            <?php } ?>
+                                            </ul>
+                                        <?php } ?>
                                     <?php if(osc_max_images_per_item()==0 || (osc_max_images_per_item()!=0 && osc_count_item_resources()<  osc_max_images_per_item())) { ?>
-                                    <div class="row">
+                                    <div class="input input-file">
                                         <input type="file" name="photos[]" />
                                     </div>
-                                    <?php }; ?>
+                                    <?php } ?>
+                                    <div class="more-photos input">
+                                        <a href="javascript://" onclick="return add_photo_field();"><?php _e('Add new photo', 'modern'); ?></a>
+                                    </div>
                                 </div>
-                                <a href="#" onclick="addNewPhoto(); return false;"><?php _e('Add new photo', 'modern'); ?></a>
+                                <!-- photo end -->
+                            <?php } ?>
+                            <!-- location -->
+                            <h3><?php _e('Location', 'twitter_bootstrap') ?></h3>
+                            <?php item_country_box(__("Country", "twitter_bootstrap"), __("Select a country...", "twitter_bootstrap")) ; ?>
+                            <?php item_region_box(__("Region", "twitter_bootstrap"), __("Select a region...", "twitter_bootstrap")) ; ?>
+                            <?php item_city_box(__("City", "twitter_bootstrap"), __("Select a city...", "twitter_bootstrap")) ; ?>
+                            <div class="clearfix">
+                                <label for="cityArea"><?php _e('Neighborhood', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <?php item_city_area( ) ; ?>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <label for="address"><?php _e('Address', 'twitter_bootstrap') ; ?></label>
+                                <div class="input">
+                                    <?php item_address( ) ; ?>
+                                </div>
+                            </div>
+                            <!-- location end -->
+                            <div class="clearfix">
+                                <div id="plugin-hook"></div>
+                            </div>
+                            <?php if( osc_recaptcha_items_enabled() ) { ?>
+                            <div class="clearfix">
+                                <?php osc_show_recaptcha(); ?>
                             </div>
                             <?php } ?>
-
-                            <div class="box location">
-                                <h2><?php _e('Location', 'modern'); ?></h2>
-                                <div class="row">
-                                    <label><?php _e('Country', 'modern'); ?></label>
-                                    <?php ItemForm::country_select() ; ?>
-                                </div>
-                                <div class="row">
-                                    <label><?php _e('Region', 'modern'); ?></label>
-                                    <?php ItemForm::region_text() ; ?>
-                                </div>
-                                <div class="row">
-                                    <label><?php _e('City', 'modern'); ?></label>
-                                    <?php ItemForm::city_text() ; ?>
-                                </div>
-                                <div class="row">
-                                    <label><?php _e('City area', 'modern'); ?></label>
-                                    <?php ItemForm::city_area_text() ; ?>
-                                </div>
-                                <div class="row">
-                                    <label><?php _e('Address', 'modern'); ?></label>
-                                    <?php ItemForm::address_text() ; ?>
-                                </div>
+                            <div class="actions">
+                                <button class="btn" type="submit"><?php _e('Update', 'twitter_bootstrap') ; ?></button>
+                                <a class="btn" href="javascript:history.back(-1)"><?php _e('Cancel', 'twitter_bootstrap') ; ?></a>
                             </div>
-                            <?php ItemForm::plugin_edit_item(); ?>
-                            <?php if( osc_recaptcha_items_enabled() ) {?>
-                            <div class="box">
-                                <div class="row">
-                                    <?php osc_show_recaptcha(); ?>
-                                </div>
-                            </div>
-                            <?php }?>
-                        <button class="itemFormButton" type="submit"><?php _e('Update', 'modern'); ?></button>
-                        <a href="javascript:history.back(-1)" class="go_back"><?php _e('Cancel', 'modern'); ?></a>
-                    </fieldset>
-                </form>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-            <?php osc_current_web_theme_path('footer.php') ; ?>
         </div>
-        <?php osc_show_flash_message() ; ?>
-        <?php osc_run_hook('footer'); ?>
+        <?php osc_current_web_theme_path('footer.php') ; ?>
     </body>
 </html>

@@ -361,6 +361,9 @@ JAVASCRIPT;
          }
      }
 
+     /**
+      * Extend Pagination Class
+      */
      class TwitterPagination extends Pagination
      {
         public function __construct($params = null) {
@@ -392,40 +395,580 @@ JAVASCRIPT;
         }
      }
      
-     function twitter_user_item_pagination() {
-         $params = array('total'              => (int) View::newInstance()->_get('list_total_pages'),
-                         'selected'           => (int) View::newInstance()->_get('list_page'),
-                         'class_first'        => '',
-                         'class_last'         => '',
-                         'class_prev'         => 'prev',
-                         'class_next'         => 'next',
-                         'delimiter'          => '',
-                         'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
-                         'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
-                         'class_selected'     => 'active',
-                         'class_non_selected' => '',
-                         'force_limits'       => false,
-                         'url'                => osc_user_list_items_url('{PAGE}')) ;
-         $pagination = new TwitterPagination($params) ;
-         return $pagination->doPagination() ;
-     }
+    /**
+     * Helper to use twitter pagination in user items
+     */
+    function twitter_user_item_pagination() {
+        $params = array('total'              => (int) View::newInstance()->_get('list_total_pages'),
+                        'selected'           => (int) View::newInstance()->_get('list_page'),
+                        'class_first'        => '',
+                        'class_last'         => '',
+                        'class_prev'         => 'prev',
+                        'class_next'         => 'next',
+                        'delimiter'          => '',
+                        'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
+                        'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
+                        'class_selected'     => 'active',
+                        'class_non_selected' => '',
+                        'force_limits'       => false,
+                        'url'                => osc_user_list_items_url('{PAGE}')) ;
+        $pagination = new TwitterPagination($params) ;
+        return $pagination->doPagination() ;
+    }
      
-     function twitter_comments_item_pagination() {
-         $params = array('total'              => ceil( osc_item_total_comments()/osc_comments_per_page() ),
-                         'selected'           => osc_item_comments_page(),
-                         'class_first'        => '',
-                         'class_last'         => '',
-                         'class_prev'         => 'prev',
-                         'class_next'         => 'next',
-                         'delimiter'          => '',
-                         'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
-                         'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
-                         'class_selected'     => 'active',
-                         'class_non_selected' => '',
-                         'force_limits'       => false,
-                         'url'                => osc_item_comments_url('{PAGE}')) ;
-         $pagination = new TwitterPagination($params) ;
-         return $pagination->doPagination() ;
-     }
+    /**
+     * Helper to use twitter pagination in item comments
+     */
+    function twitter_comments_item_pagination() {
+        $params = array('total'              => ceil( osc_item_total_comments()/osc_comments_per_page() ),
+                        'selected'           => osc_item_comments_page(),
+                        'class_first'        => '',
+                        'class_last'         => '',
+                        'class_prev'         => 'prev',
+                        'class_next'         => 'next',
+                        'delimiter'          => '',
+                        'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
+                        'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
+                        'class_selected'     => 'active',
+                        'class_non_selected' => '',
+                        'force_limits'       => false,
+                        'url'                => osc_item_comments_url('{PAGE}')) ;
+        $pagination = new TwitterPagination($params) ;
+        return $pagination->doPagination() ;
+    }
+
+    /*********************/
+    /* Item form helpers */
+    /*********************/
+    function item_selected_category_id () {
+        $category_id = Params::getParam('catId') ;
+        if(Session::newInstance()->_getForm('catId') != ""){
+            $category_id = Session::newInstance()->_getForm('catId') ;
+        }
+
+        if( osc_item() != null ) {
+            $item        = osc_item() ;
+            $category_id = $item['fk_i_category_id'] ;
+        }
+        
+        if( empty($category_id) ) {
+            return "null" ;
+        }
+        
+        if( !Category::newInstance()->is_root($category_id) ) {
+            $category = Category::newInstance()->findRootCategory($category_id) ;
+            return $category['pk_i_id'];
+        }
+        
+        return $category_id ;
+    }
+    
+    function item_selected_subcategory_id () {
+        $category_id = Params::getParam('catId') ;
+        if(Session::newInstance()->_getForm('catId') != ""){
+            $category_id = Session::newInstance()->_getForm('catId') ;
+        }
+
+        if( osc_item() != null ) {
+            $item        = osc_item() ;
+            $category_id = $item['fk_i_category_id'] ;
+        }
+        
+        if( empty($category_id) ) {
+            return "null" ;
+        }
+        
+        if( Category::newInstance()->is_root($category_id) ) {
+            return "null" ;
+        }
+        
+        return $category_id ;
+    }
+
+    function item_category_select_js() {
+        ?>
+        <script type="text/javascript">
+            twitter_theme.categories = {} ;
+        <?php
+        $aCategories = osc_get_categories() ;
+        foreach($aCategories as $category) {
+            if( is_array($category['categories']) && (count($category['categories']) > 0) ) {
+                echo 'twitter_theme.categories.id_' . $category['pk_i_id'] . ' = {' . PHP_EOL ;
+                foreach($category['categories'] as $subcategory) {
+                    echo $subcategory['pk_i_id'] . ': { id: ' . $subcategory['pk_i_id'] . ', slug: "' . addslashes($subcategory['s_slug']) . '", name: "' . addslashes($subcategory['s_name']) . '" } ,' . PHP_EOL ;
+                }
+                echo '} ;' ;
+            } else {
+                echo 'twitter_theme.categories.' . $category['s_slug'] . ' = { } ;' . PHP_EOL  ;
+            }
+        }
+        ?>
+        </script>
+        <?php
+    }
+
+    function item_category_select($default_option) {
+        $categories = Category::newInstance()->findRootCategories() ; ?>
+        <?php if( count($categories) > 0 ) { ?>
+        <select class="category">
+            <option><?php echo $default_option ; ?></option>
+            <?php foreach($categories as $c) { ?>
+            <option value="<?php echo $c['pk_i_id'] ; ?>"><?php echo $c['s_name'] ; ?></option>
+            <?php } ?>
+        </select>
+        <?php } ?>
+        <select class="subcategory" name="catId" style="display:none"></select>
+        <?php
+    }
+
+    function item_title_description_multilanguage_box($title_txt, $description_txt, $locales) { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <ul class="tabs" data-tabs="tabs">
+            <?php $i = 0; ?>
+            <?php foreach($locales as $l) { ?>
+                <li <?php if( $i == 0 ) { ?>class="active"<?php } ?>><a href="#tab<?php echo $l['pk_c_code'] ; ?>"><?php echo $l['s_name'] ; ?></a></li>
+                <?php $i++; ?>
+            <?php } ?>
+        </ul>
+        <div class="tab-content">
+            <?php $i = 0; ?>
+            <?php foreach($locales as $l) { ?>
+                <div <?php if( $i == 0 ) { ?>class="active"<?php } ?> id="tab<?php echo $l['pk_c_code'] ; ?>">
+                    <div class="clearfix">
+                        <label><?php echo $title_txt ; ?></label>
+                        <div class="input">
+                            <input class="xxlarge" type="text" name="title[<?php echo $l['pk_c_code'] ; ?>]" value="<?php echo get_item_title($item, $l['pk_c_code']) ; ?>" />
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <label><?php echo $description_txt ; ?></label>
+                        <div class="input">
+                            <textarea name="description[<?php echo $l['pk_c_code'] ; ?>]" class="xxlarge" rows="9"><?php echo get_item_description($item, $l['pk_c_code']) ; ?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <?php $i++; ?>
+            <?php } ?>
+        <?php
+    }
+    
+    function item_title_description_box($title_txt, $description_txt, $locales) { ?>
+        <?php $l = $locales[0] ; ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <div class="clearfix">
+            <label><?php echo $title_txt ; ?></label>
+            <div class="input">
+                <input class="xxlarge" type="text" name="title[<?php echo $l['pk_c_code'] ; ?>]" value="<?php echo get_item_title($item, $l['pk_c_code']) ; ?>" />
+            </div>
+        </div>
+        <div class="clearfix">
+            <label><?php echo $description_txt ; ?></label>
+            <div class="input">
+                <textarea name="description[<?php echo $l['pk_c_code'] ; ?>]" class="xxlarge" rows="9"><?php echo get_item_description($item, $l['pk_c_code']) ; ?></textarea>
+            </div>
+        </div>
+        <?php
+    }
+
+    function get_item_title($item, $locale_code) {
+        $title = "" ;
+        if( count($item) == 0 ) {
+            return get_item_title_from_session($locale_code) ;
+        }
+        
+        if( !array_key_exists($locale_code, $item['locale']) ) {
+            return get_item_title_from_session($locale_code) ;
+        }
+        
+        if( !array_key_exists('s_title', $item['locale'][$locale_code]) ) {
+            return get_item_title_from_session($locale_code) ;
+        }
+        
+        $title = $item['locale'][$locale_code]['s_title'] ;
+        
+        $titleFromSession = get_item_title_from_session($locale_code) ;
+        if( $titleFromSession != "" ) {
+            return $titleFromSession ;
+        }
+        
+        return $title ;
+    }
+    
+    function get_item_title_from_session($locale_code) {
+        $title     = "" ;
+        
+        $titleForm = Session::newInstance()->_getForm('title');
+        if( !is_array($titleForm) ) {
+            return $title ;
+        }
+        
+        if( array_key_exists($locale_code, $titleForm) && ($titleForm[$locale_code] != "" ) ) {
+            $title = $titleForm[$locale_code];
+        }
+        
+        return $title ;
+    }
+    
+    function get_item_description($item, $locale_code) {
+        $description = "" ;
+        if( count($item) == 0 ) {
+            return get_item_description_from_session($locale_code) ;
+        }
+        
+        if( !array_key_exists($locale_code, $item['locale']) ) {
+            return get_item_description_from_session($locale_code) ;
+        }
+        
+        if( !array_key_exists('s_description', $item['locale'][$locale_code]) ) {
+            return get_item_description_from_session($locale_code) ;
+        }
+        
+        $description = $item['locale'][$locale_code]['s_description'] ;
+        
+        $descriptionFromSession = get_item_description_from_session($locale_code) ;
+        if( $descriptionFromSession != "" ) {
+            return $descriptionFromSession ;
+        }
+        
+        return $description ;
+    }
+    
+    function get_item_description_from_session($locale_code) {
+        $description     = "" ;
+        
+        $descriptionForm = Session::newInstance()->_getForm('description');
+        if( !is_array($descriptionForm) ) {
+            return $description ;
+        }
+        
+        if( array_key_exists($locale_code, $descriptionForm) && ($descriptionForm[$locale_code] != "" ) ) {
+            $description = $descriptionForm[$locale_code];
+        }
+        
+        return $description ;
+    }
+    
+    function item_price_input() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="text" id="price" class="medium" name="f_price" value="<?php echo get_item_price($item) ; ?>">
+        <?php
+    }
+    
+    function get_item_price($item) {
+        $priceFromSession = Session::newInstance()->_getForm('price');
+        
+        if( count($item) == 0) {
+            return $priceFromSession ;
+        }
+        
+        if( $priceFromSession != '' ) {
+            return $priceFromSession ;
+        }
+        
+        return $item['f_price'] ;
+    }
+    
+    function item_currency_select() { ?>
+        <?php $aCurrencies = osc_get_currencies(); ?>
+        <select class="medium" id="currency" name="currency">
+            <?php foreach($aCurrencies as $currency) { ?>
+                <option value="<?php echo $currency['pk_c_code'] ; ?>"><?php echo $currency['s_description'] ; ?></option>
+            <?php } ?>
+        </select>
+        <?php
+    }
+    
+    function item_contact_name_input() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="text" id="contactName" class="large" name="contactName" value="<?php echo get_item_contact_name($item) ; ?>">
+        <?php
+    }
+    
+    function get_item_contact_name($item) {
+        $contactNameFromSession = Session::newInstance()->_getForm('contactName');
+        
+        if( count($item) == 0) {
+            return $contactNameFromSession ;
+        }
+        
+        if( $contactNameFromSession != '' ) {
+            return $contactNameFromSession ;
+        }
+        
+        return $item['s_contact_name'] ;
+    }
+    
+    function item_contact_mail_input() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="text" id="contactEmail" class="large" name="contactEmail" value="<?php echo get_item_contact_mail($item) ; ?>">
+        <?php
+    }
+    
+    function get_item_contact_mail($item) {
+        $contactMailFromSession = Session::newInstance()->_getForm('contactEmail');
+        
+        if( count($item) == 0) {
+            return $contactMailFromSession ;
+        }
+        
+        if( $contactMailFromSession != '' ) {
+            return $contactMailFromSession ;
+        }
+        
+        return $item['s_contact_email'] ;
+    }
+    
+    function item_contact_show_email_checkbox() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="checkbox" id="showEmail" name="showEmail" value="1" <?php echo get_item_contact_show_email($item) ; ?>>
+        <?php
+    }
+    
+    function get_item_contact_show_email($item) {
+        $showMailFromSession = false;
+
+        if( Session::newInstance()->_getForm('showEmail') != 0) {
+            $showMailFromSession = Session::newInstance()->_getForm('showEmail') ;
+        }
+
+        if( count($item) != 0) {
+            $showMailFromSession = $item['b_show_email'] ;
+        }
+        
+        if( $showMailFromSession ) {
+            return 'checked="checked"' ;
+        }
+        
+        return "" ;
+    }
+
+    function item_country_box($country_txt, $country_select_txt) {
+        $aCountries = osc_get_countries() ;
+        $item       = (osc_item() != null) ? osc_item() : array() ;
+        
+        switch( count($aCountries) ) {
+            case 0:     // no country, show input ?>
+                        <div class="clearfix">
+                            <label><?php echo $country_txt ; ?></label>
+                            <div class="input">
+                                <input class="country_name" id="country_name" type="text" name="country" value="<?php echo get_country_name($item) ; ?>" />
+                            </div>
+                        </div>
+            <?php
+            break;
+            case 1:     // one country ?>
+                        <input class="country_id" id="country_id" type="hidden" name="countryId" value="<?php echo get_country_id($item) ; ?>" />
+            <?php
+            break;
+            default:    // more than one country ?>
+                        <div class="clearfix">
+                            <label><?php echo $country_txt ; ?></label>
+                            <div class="input">
+                                <select class="country_id" id="country_id" name="countryId">
+                                    <option value=""><?php echo $country_select_txt ; ?></option>
+                                    <?php foreach($aCountries as $country) { ?>
+                                        <option value="<?php echo $country['pk_c_code'] ; ?>"><?php echo $country['s_name'] ; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+            <?php
+            break;
+        }
+    }
+    
+    function get_country_name($item) {
+        $country_name = "" ;
+        
+        if( array_key_exists('s_country', $item) ) {
+            $country_name = $item['s_country'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('country') != '' ) {
+            $country_name = Session::newInstance()->_getForm('country') ;
+        }
+        
+        return $country_name;
+    }
+    
+    function get_country_id($item) {
+        $country_id = "" ;
+        
+        if( array_key_exists('fk_c_country_code', $item) ) {
+            $country_id = $item['fk_c_country_code'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('countryId') != '' ) {
+            $country_id = Session::newInstance()->_getForm('countryId') ;
+        }
+        
+        return $country_id ;
+    }
+    
+    function item_region_box($region_txt, $region_select_txt) {
+        $aRegions   = osc_get_regions() ;
+        $item       = (osc_item() != null) ? osc_item() : array() ;
+        
+        switch( count($aRegions) ) {
+            case 0:     // 0 regions ?>
+                        <div class="clearfix">
+                            <label><?php echo $region_txt ; ?></label>
+                            <div class="input">
+                                <input class="region_name" id="region_name" type="text" name="region" value="<?php echo get_region_name($item) ; ?>" />
+                            </div>
+                        </div>
+            <?php
+            break;
+            case 1:     // only one region ?>
+                        <input class="region_id" id="region_id" type="hidden" name="regionId" value="<?php echo get_region_id($item) ; ?>" />
+            <?php
+            break;
+            default:    // more than one region ?>
+                        <div class="clearfix">
+                            <label><?php echo $region_txt ; ?></label>
+                            <div class="input">
+                                <select class="region_id" id="region_id" name="regionId">
+                                    <option value=""><?php echo $region_select_txt ; ?></option>
+                                    <?php foreach($aRegions as $region) { ?>
+                                        <option value="<?php echo $region['pk_i_id'] ; ?>"><?php echo $region['s_name'] ; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+            <?php
+            break;
+        }
+    }
+    
+    function get_region_name($item) {
+        $region_name = "" ;
+        
+        if( array_key_exists('s_region', $item) ) {
+            $region_name = $item['s_region'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('region') != '' ) {
+            $region_name = Session::newInstance()->_getForm('region') ;
+        }
+        
+        return $region_name;
+    }
+    
+    function get_region_id($item) {
+        $region_id = "" ;
+        
+        if( array_key_exists('fk_i_region_id', $item) ) {
+            $region_id = $item['fk_i_region_id'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('regionId') != '' ) {
+            $region_id = Session::newInstance()->_getForm('regionId') ;
+        }
+        
+        return $region_id ;
+    }
+    
+    function item_city_box($city_txt, $city_select_txt) {
+        $aCities    = osc_get_cities() ;
+        $item       = (osc_item() != null) ? osc_item() : array() ;
+        
+        switch( count($aCities) ) {
+            case 0:     // 0 regions ?>
+                        <div class="clearfix">
+                            <label><?php echo $city_txt ; ?></label>
+                            <div class="input">
+                                <input class="city_name" id="city_name" type="text" name="city" value="<?php echo get_city_name($item) ; ?>" />
+                            </div>
+                        </div>
+            <?php
+            break;
+            case 1:     // only one region ?>
+                        <input class="city_id" id="city_id" type="hidden" name="cityId" value="<?php echo get_city_id($item) ; ?>" />
+            <?php
+            break;
+            default:    // more than one region ?>
+                        <div class="clearfix">
+                            <label><?php echo $city_txt ; ?></label>
+                            <div class="input">
+                                <select class="city_id" id="city_id" name="cityId">
+                                    <option value=""><?php echo $city_select_txt ; ?></option>
+                                    <?php foreach($aCities as $city) { ?>
+                                        <option value="<?php echo $city['pk_i_id'] ; ?>"><?php echo $city['s_name'] ; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+            <?php
+            break;
+        }
+    }
+
+    function get_city_name($item) {
+        $city_name = "" ;
+        
+        if( array_key_exists('s_city', $item) ) {
+            $city_name = $item['s_city'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('city') != '' ) {
+            $city_name = Session::newInstance()->_getForm('city') ;
+        }
+        
+        return $city_name;
+    }
+    
+    function get_city_id($item) {
+        $city_id = "" ;
+        
+        if( array_key_exists('fk_i_city_id', $item) ) {
+            $city_id = $item['fk_i_city_id'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('cityId') != '' ) {
+            $city_id = Session::newInstance()->_getForm('cityId') ;
+        }
+        
+        return $city_id ;
+    }
+    
+    function item_city_area() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="text" id="cityArea" name="cityArea" value="<?php echo get_item_city_area($item) ; ?>" />
+        <?php        
+    }
+    
+    function get_item_city_area($item) {
+        $city_area = "" ;
+        
+        if( array_key_exists('s_city_area', $item) ) {
+            $city_area = $item['s_city_area'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('cityArea') != '' ) {
+            $city_area = Session::newInstance()->_getForm('cityArea') ;
+        }
+        
+        return $city_area ;
+    }
+    
+    function item_address() { ?>
+        <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
+        <input type="text" id="address" name="address" value="<?php echo get_item_address($item) ; ?>" />
+        <?php        
+    }
+    
+    function get_item_address($item) {
+        $address = "" ;
+        
+        if( array_key_exists('s_address', $item) ) {
+            $address = $item['s_address'] ;
+        }
+                
+        if( Session::newInstance()->_getForm('address') != '' ) {
+            $address = Session::newInstance()->_getForm('address') ;
+        }
+        
+        return $address ;
+    }
 
 ?>

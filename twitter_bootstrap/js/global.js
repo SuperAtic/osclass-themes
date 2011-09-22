@@ -1,5 +1,6 @@
+var twitter_theme = window.twitter_theme || {} ;
+
 $(document).ready(function(){
-    
     // Dropdown languages
     // ===============================
     $(".login_nav ul li.languages").hover(
@@ -10,39 +11,32 @@ $(document).ready(function(){
             $(this).find("ul").hide();
         }
     );
-
 	// Dropdown topbar nav
     // ===============================
     $("body").bind("click", function (e) {
         $('a.menu').parent("li").removeClass("open");
     });
-
     $("a.menu").click(function (e) {
 		$('a.menu').parent("li").removeClass("open");
         var $li = $(this).parent("li").toggleClass('open');
         return false;
     });
-    
     // Close alerts
     // ===============================
     $(".alert-message .close").bind("click", function(e) {
        $(this).parent().fadeOut('slow'); 
     });
-    
     // Close item contact modal
     // ===============================
     $(".item-contact .close").bind("click", function(e) {
        $(this).parent().parent().parent().fadeOut('slow'); 
     });
-
     $(".item-sendfriend .close").bind("click", function(e) {
        $(this).parent().parent().parent().fadeOut('slow'); 
     });
-    
     // Select with choosen
+    // ===============================
     $(".chzn-select").chosen();
-    
-    
 	/*// User_menu show/hide submenu
 	$("#user_menu .with_sub").hover(function(){
 		$(this).find("ul").show();

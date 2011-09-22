@@ -29,7 +29,6 @@
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div class="container margin-top-10">
             <?php twitter_show_flash_message() ; ?>
-            <?php breadcrumbs(); ?>
         </div>
         <div class="container item-detail">
             <div class="row">
