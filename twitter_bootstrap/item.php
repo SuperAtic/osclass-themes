@@ -11,10 +11,19 @@
     <head>
         <?php osc_current_web_theme_path('head.php') ; ?>
         <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('fancybox/jquery.fancybox-1.3.4.js') ; ?>"></script>
+        <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('bootstrap-modal.js') ; ?>"></script>
         <link href="<?php echo osc_current_web_theme_js_url('fancybox/jquery.fancybox-1.3.4.css') ; ?>" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
             $(document).ready(function(){
                 $("a[rel=image_group]").fancybox();
+                
+                $('#item-contact').bind('click', function(event) {
+                    $(this).modal('hide') ;
+                }) ;
+                
+                $('#item-sendfriend').bind('click', function(event) {
+                    $(this).modal('hide') ;
+                }) ;
             });
         </script>
         <?php if( osc_item_is_expired () ) { ?>
@@ -31,10 +40,11 @@
             <?php twitter_show_flash_message() ; ?>
         </div>
         <div class="container item-detail">
+            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="row">
                 <!-- item detail -->
                 <div class="span16 columns">
-                    <h1><?php if( osc_price_enabled_at_items() ) { ?><small><?php echo osc_item_formated_price() ; ?></small> <?php } ?><?php echo osc_item_title(); ?></h1>
+                    <h1><?php if( osc_price_enabled_at_items() ) { ?><small><?php echo osc_item_formated_price() ; ?></small> &middot; <?php } ?><?php echo osc_item_title(); ?></h1>
                     <p class="no-margin"><?php printf(__('<strong>Published date:</strong> %s %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ), date(osc_time_format(), strtotime(osc_item_pub_date())) ) ; ?></p>
                     <?php if ( osc_item_mod_date() != '' ) { ?>
                     <p class="no-margin"><?php printf(__('<strong>Modified date:</strong> %s %s', 'twitter_bootstrap'), osc_format_date( osc_item_mod_date() ), date(osc_time_format(), strtotime(osc_item_mod_date())) ) ; ?></p>
@@ -58,16 +68,20 @@
                     <?php osc_run_hook('item_detail', osc_item() ) ; ?>
                     <?php if( osc_images_enabled_at_items() && (osc_count_item_resources() > 0) ) { ?>
                     <div class="photos">
+                        <ul class="media-grid">
                         <?php while( osc_has_item_resources() ) { ?>
-                        <a rel="image_group" href="<?php echo osc_resource_url(); ?>"><img src="<?php echo osc_resource_thumbnail_url(); ?>" width="150" alt="<?php echo osc_item_title() ; ?>" title="<?php echo osc_item_title() ; ?>"/></a>
+                            <li>
+                                <a rel="image_group" href="<?php echo osc_resource_url(); ?>"><img src="<?php echo osc_resource_thumbnail_url(); ?>" width="150" alt="<?php echo osc_item_title() ; ?>" title="<?php echo osc_item_title() ; ?>"/></a>
+                            </li>
                         <?php } ?>
+                        </ul>
                     </div>
                     <?php } ?>
                     <p>
                         <?php if ( !$is_expired && $is_user && $is_can_contact ) { ?>
-                        <a class="btn primary item-contact-button" href="javascript://"><?php _e('Contact seller', 'twitter_bootstrap') ; ?></a>
+                        <a class="btn primary item-contact-button" data-controls-modal="item-contact" data-backdrop="true" data-keyboard="true" href="javascript://"><?php _e('Contact seller', 'twitter_bootstrap') ; ?></a>
                         <?php } ?>
-                        <a class="btn primary item-share-button" href="javascript://"><?php _e('Share', 'twitter_bootstrap') ; ?></a>
+                        <a class="btn primary item-share-button" data-controls-modal="item-sendfriend" data-backdrop="true" data-keyboard="true" href="javascript://"><?php _e('Share', 'twitter_bootstrap') ; ?></a>
                     </p>
                     <?php osc_run_hook('location') ; ?>
                 </div>
@@ -149,14 +163,14 @@
         </div>
         <?php if ( !$is_expired && $is_user && $is_can_contact ) { ?>
         <!-- item contact -->
-        <div class="modal item-contact">
+        <div id="item-contact" class="modal hide fade item-contact">
             <form class="form-stacked" action="<?php echo osc_base_url(true) ; ?>" method="post" name="contact_form" id="contact_form" onsubmit="return doItemContact() ;">
                 <input type="hidden" name="action" value="contact_post" />
                 <input type="hidden" name="page" value="item" />
                 <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
                 <div class="modal-header">
-                    <h3><?php _e('Contact publisher', 'twitter_bootstrap') ; ?></h3>
                     <a href="#" class="close">×</a>
+                    <h3><?php _e('Contact publisher', 'twitter_bootstrap') ; ?></h3>
                 </div>
                 <div class="modal-body">
                     <?php osc_prepare_user_info() ; ?>
@@ -199,14 +213,14 @@
         <!-- item contact end -->
         <?php } ?>
         <!-- item send friend -->
-        <div class="modal item-sendfriend">
+        <div id="item-sendfriend" class="modal hide fade item-sendfriend">
             <form class="form-stacked" action="<?php echo osc_base_url(true) ; ?>" method="post" name="sendfriend" onsubmit="return doItemSendFriend() ;">
                 <input type="hidden" name="action" value="send_friend_post" />
                 <input type="hidden" name="page" value="item" />
                 <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
                 <div class="modal-header">
-                    <h3><?php _e('Send to a friend', 'twitter_bootstrap') ; ?></h3>
                     <a href="#" class="close">×</a>
+                    <h3><?php _e('Send to a friend', 'twitter_bootstrap') ; ?></h3>
                 </div>
                 <div class="modal-body">
                     <div class="clearfix">
@@ -252,41 +266,6 @@
             </form>
         </div>
         <!-- item send friend end -->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                /* js item-contact */
-                $(".item-contact.modal").hide();
-
-                $(".item-contact-button").click(function() {
-                    $(".item-sendfriend.modal").hide();
-                    $(".item-contact.modal").fadeIn('slow');
-                }) ;
-
-                $(".item-contact-button-cancel").click(function() {
-                    $(".item-contact.modal").fadeOut('slow');
-                }) ;
-                /* js item-contact end */
-                /* js sendfriend */
-                $(".item-sendfriend.modal").hide();
-                
-                $(".item-share-button").click(function() {
-                    $(".item-contact.modal").hide();
-                    $(".item-sendfriend.modal").fadeIn('slow');
-                }) ;
-
-                $(".item-sendfriend-button-cancel").click(function() {
-                    $(".item-sendfriend.modal").fadeOut('slow');
-                }) ;
-                /* js item-sendfriend end */
-
-                $(document).keyup(function(e) { 
-                    if (e.keyCode == 27) { 
-                        $(".item-contact.modal").fadeOut('slow');
-                        $(".item-sendfriend.modal").fadeOut('slow');
-                    }
-                });
-            }) ;
-        </script>
         <script type="text/javascript">
             var text_error_required = '' ;
             var text_valid_email    = '' ;

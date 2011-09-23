@@ -34,13 +34,14 @@
             <?php twitter_show_flash_message() ; ?>
         </div>
         <div class="container item-post">
+            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="row">
                 <div class="span16 columns">
-                    <h1><?php _e('Publish an item', 'twitter_bootstrap') ; ?></h1>
                     <form class="well" name="item" action="<?php echo osc_base_url(true) ; ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="item_add_post" />
                         <input type="hidden" name="page" value="item" />
                         <fieldset>
+                            <h1><?php _e('Publish an item', 'twitter_bootstrap') ; ?></h1>
                             <!-- category input -->
                             <div class="clearfix">
                                 <label><?php _e('Category', 'twitter_bootstrap') ; ?></label>
@@ -74,12 +75,15 @@
                             <?php } ?>
                             <?php if( osc_images_enabled_at_items() ) { ?>
                                 <!-- photo -->
+                                <h3><?php _e('Photos', 'twitter_bootstrap') ; ?></h3>
                                 <div class="clearfix photos">
-                                    <label><?php _e('Photos', 'twitter_bootstrap') ; ?></label>
                                     <div class="input input-file">
                                         <input type="file" name="photos[]" />
                                     </div>
                                     <div class="more-photos input">
+                                        
+                                    </div>
+                                    <div class="input">
                                         <a href="javascript://" onclick="return add_photo_field();"><?php _e('Add new photo', 'modern'); ?></a>
                                     </div>
                                 </div>

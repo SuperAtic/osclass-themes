@@ -9,6 +9,7 @@
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div class="container margin-top-10">
             <?php twitter_show_flash_message() ; ?>
+            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="row">
                 <div class="span16 columns">
                     <h1><?php echo osc_static_page_title() ; ?></h1>

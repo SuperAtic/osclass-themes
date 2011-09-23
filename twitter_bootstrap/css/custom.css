@@ -2,6 +2,7 @@
 .margin-top-10 { margin-top: 10px; }
 .container.margin-top-10 { margin-top: 10px; }
 p.no-margin { margin: 0px; }
+.label a { color: white; }
 /* HEADER */
 div.topbar-wrapper { position: relative; height: 40px; margin: 5px 0 0; }
 div.topbar-wrapper div.topbar { position: absolute; margin: 0 -20px; }
@@ -35,9 +36,9 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 .latest_ads.container h2 { font-size: 14px; line-height: 18px }
 .latest_ads.container p { margin-bottom: 0px; }
 .latest_ads.container p.gray { color: #BFBFBF; }
-.latest_ads.container .photo { margin-top: 10px; width: 100px; float: left; display: inline; }
+.latest_ads.container .photo { width: 100px; float: left; display: inline; margin: 5px; }
 .latest_ads.container .description { display: inline; width: 600px; }
-.latest_ads.container .line { border-bottom: 1px dotted #cccccc; margin-bottom: 10px; padding-bottom: 10px; }
+.latest_ads.container .line { border-bottom: 1px dotted #cccccc; margin-bottom: 10px; padding-bottom: 10px; min-height: 80px; }
 .latest_ads.container .show-all-ads { text-align: right; font-size: 14px; }
 /* CONTACT */
 .contact { width: 600px; margin: 25px auto; }
@@ -55,6 +56,7 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 .item-detail h1 { font-size: 20px; border-bottom: 1px dotted #CCCCCC; }
 .item-detail h1 small { font-size: 16px; }
 .item-detail .photos a img { text-decoration: none; }
+.item-detail .comments { margin-top: 10px; }
 .item-detail .comments h2 { border-bottom: 1px dotted #404040; margin-bottom: 12px; }
 .item-detail .comments .list-comments { border-bottom: 1px dotted #404040; }
 .item-detail .comments .list-comments .comment p { background: no-repeat url('../images/comments_quotes.png'); padding-left: 50px; }
@@ -64,13 +66,17 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 .item-detail .comments form fieldset, .item-detail .comments form fieldset .actions { padding-bottom: 0px; }
 .item-detail .comments .input textarea.xlarge  { width: 400px; }
 /* ITEM POST AND EDIT */
-.item-post h1, .item-edit h1 { margin-bottom: 5px; margin-top: 10px; margin-left: 5px; }
+.item-post h1 { margin-bottom: 20px; margin-left: 5px; margin-top: 10px; border-bottom: 1px dotted #404040; }
+.item-edit h1 { margin-bottom: 20px; margin-left: 5px; margin-top: 10px; border-bottom: 1px dotted #404040; }
+.item-post form, .item-edit form { padding-top: 0px; }
+.item-post form fieldset, .item-edit form fieldset { padding-top: 0px; }
 .item-post form.well, .item-edit form.well { padding-bottom: 0px; }
 .item-post form label, .item-edit form label { font-weight: 600; font-size: 14px; }
 .item-post form input[type="file"], .item-edit form input[type="file"] { background-color: whiteSmoke; }
 .item-post .inputs-list label, .item-edit .inputs-list label { font-weight: normal; }
 .item-post form h3, .item-edit form h3 { margin-left: 40px; border-bottom: 1px dotted #404040; margin-bottom: 20px; }
 .item-edit .media-grid { margin-left: 50px; }
-.item-edit .photos .input-file, .item-edit .photos .more-photos { margin-left: 50px }
-.item-edit .photos .more-photos .input-file { margin-left: 0px; }
+.item-post .photos .input-file, .item-post .photos .more-photos, .item-post .photos .input { margin-left: 50px }
+.item-edit .photos .input-file, .item-edit .photos .more-photos, .item-edit .photos .input { margin-left: 50px }
+.item-edit .photos .more-photos .input-file, .item-post .photos .more-photos .input-file { margin-left: 0px; }
 .item-edit .photos .thumbnail { width: 90px; height: 90px; }

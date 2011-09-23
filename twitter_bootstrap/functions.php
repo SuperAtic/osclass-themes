@@ -196,6 +196,18 @@ JAVASCRIPT;
         osc_add_hook('admin_menu', 'twitter_admin_menu') ;
     }
     
+    if( !function_exists('osc_item_category_url') ) {
+        function osc_item_category_url($category_id) {
+            View::newInstance()->_erase('subcategories') ;
+            View::newInstance()->_erase('categories') ;
+            View::newInstance()->_exportVariableToView('category', Category::newInstance()->findByPrimaryKey($category_id) ) ;
+            $url = osc_search_category_url() ;
+            View::newInstance()->_erase('category') ;
+   
+            return $url ;
+        }
+    }
+    
     if( !function_exists('meta_title') ) {
         function meta_title( ) {
             $location = Rewrite::newInstance()->get_location() ;
@@ -275,6 +287,7 @@ JAVASCRIPT;
                 case('login'):
                     switch ($section) {
                         case('recover'): $text = __('Recover your password', 'twitter_bootstrap') . ' - ' . osc_page_title() ;
+                        break;
                         default:         $text = __('Login', 'twitter_bootstrap') . ' - ' . osc_page_title() ;
                     }
                 break ;
@@ -971,4 +984,143 @@ JAVASCRIPT;
         return $address ;
     }
 
+    /* Breadcrumbs */
+    function twitter_breadcrumb($separator = '/') {
+        $breadcrumb = array() ;
+        $text       = '' ;
+        $location   = Rewrite::newInstance()->get_location() ;
+        $section    = Rewrite::newInstance()->get_section() ;
+        $separator  = '<span class="divider">' . trim($separator) . '</span>';
+        $page_title = '<li><a href="' . osc_base_url() .  '">' . osc_page_title() . '</a>' . $separator . '</li>';
+
+        switch ($location) {
+            case ('item'):
+                switch ($section) {
+                    case 'item_add':    break;
+                    default :           $aCategories = Category::newInstance()->toRootTree( (string) osc_item_category_id() );
+                                        $category    = '';
+                                        if(count($aCategories) == 0) {
+                                            break;
+                                        }
+
+                                        foreach ($aCategories as $aCategory) {
+                                            $list[] = '<li><a href="' . osc_item_category_url($aCategory['pk_i_id']) . '">' . $aCategory['s_name']. '</a>' . $separator . '</li>';
+                                        }
+                                        $category = implode('', $list) ;
+                                        break;
+                }
+
+                switch ($section) {
+                    case 'item_add':    $text = $page_title . '<li>' . __('Publish an item', 'twitter_bootstrap') . '</li>'; break;
+                    case 'item_edit':   $text = $page_title . '<li><a href="' . osc_item_url() . '">' . osc_item_title() . '</a>' . $separator .  '</li><li>' . __('Edit your item', 'twitter_bootstrap') . '</li>'; break;
+                    case 'send_friend': $text = $page_title . $category . '<li><a href="' . osc_item_url() . '">' . osc_item_title() . '</a>' . $separator .  '</li><li>' . __('Send to a friend', 'twitter_bootstrap') . '</li>'; break;
+                    case 'contact':     $text = $page_title . $category . '<li><a href="' . osc_item_url() . '">' . osc_item_title() . '</a>' . $separator .  '<li><li>' . __('Contact seller', 'twitter_bootstrap') . '</li>'; break;
+                    default:            $text = $page_title . $category . '<li>' . osc_item_title() . '</li>'; break;
+                }
+            break;
+            case('page'):
+                $text = $page_title . '<li>' . osc_static_page_title() . '</li>';
+            break;
+            case('search'):
+                $region     = Params::getParam('sRegion');
+                $city       = Params::getParam('sCity');
+                $pattern    = Params::getParam('sPattern');
+                $category   = osc_search_category_id();
+                $category   = ((count($category) == 1) ? $category[0] : '');
+
+                $b_show_all = ($pattern == '' && $category == '' && $region == '' && $city == '');
+                $b_category = ($category != '');
+                $b_pattern  = ($pattern != '');
+                $b_region   = ($region != '');
+                $b_city     = ($city != '');
+                $b_location = ($b_region || $b_city);
+
+                if($b_show_all) {
+                    $text = $page_title . $separator . '<span class="bc_last">' . __('Search', 'breadcrumbs') . '</span>' ;
+                    break; 
+                }
+
+                // init
+                $result = $page_title . $separator;
+
+                if($b_category) {
+                    $list        = array();
+                    $aCategories = Category::newInstance()->toRootTree($category);
+                    if(count($aCategories) > 0) {
+                        $deep = 1;
+                        foreach ($aCategories as $single) {
+                            $list[] = '<a href="' . osc_item_category_url($single['pk_i_id']) . '"><span class="bc_level_' . $deep . '">' . $single['s_name']. '</span></a>';
+                            $deep++;
+                        }
+                        // remove last link
+                        if( !$b_pattern && !$b_location ) {
+                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                        }
+                        $result .= implode($separator, $list) . $separator;
+                    }
+                }
+
+                if( $b_location ) {
+                    $list   = array();
+                    $params = array();
+                    if($b_category) $params['sCategory'] = $category;
+
+                    if($b_city) {
+                        $aCity = City::newInstance()->findByName($city);
+                        if( count($aCity) == 0 ) {
+                            $params['sCity'] = $city;
+                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_city">' . $city . '</span></a>';
+                        } else {
+                            $aRegion = Region::newInstance()->findByPrimaryKey($aCity['fk_i_region_id']);
+
+                            $params['sRegion'] = $aRegion['s_name'];
+                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_region">' . $aRegion['s_name'] . '</span></a>';
+
+                            $params['sCity'] = $aCity['s_name'];
+                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_city">' . $aCity['s_name'] . '</span></a>';
+                        }
+
+                        if( !$b_pattern ) {
+                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                        }
+                        $result .= implode($separator, $list) . $separator;
+                    } else if( $b_region ) {
+                        $params['sRegion'] = $region;
+                        $list[]  = '<a href="' . osc_search_url($params) . '"><span class="bc_region">' . $region . '</span></a>';
+
+                        if( !$b_pattern ) {
+                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                        }
+                        $result .= implode($separator, $list) . $separator;
+                    }
+                }
+
+                if($b_pattern) {
+                    $result .= '<span class="bc_last">' . __('Search Results', 'breadcrumbs') . ': ' . $pattern  . '</span>'. $separator;
+                }
+
+                // remove last separator
+                $result = preg_replace('|' . trim($separator) . '\s*$|', '', $result);
+                $text   = $result;
+            break;
+            case('login'):
+                switch ($section) {
+                    case('recover'): $text = $page_title . '<li>' . __('Recover your password', 'twitter_bootstrap') . '</li>';
+                    break;
+                    default:         $text = $page_title . '<li>' . __('Login', 'twitter_bootstrap') . '</li>';
+                }
+            break;
+            case('register'):
+                $text = $page_title . '<li>' . __('Create a new account', 'twitter_bootstrap') . '</li>';
+            break;
+            case('contact'):
+                $text = $page_title . '<li>' . __('Contact', 'twitter_bootstrap') . '</li>';
+            break;
+            default:
+            break;
+        }
+
+        return '<ul class="breadcrumb">' . $text . '</ul>';
+    }
+    
 ?>

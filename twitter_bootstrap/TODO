@@ -1,17 +1,17 @@
-- item-edit.php, item-post.php {
-    - js modals
-    - media con bootstrap
-    - more space between item and comments
-    - js validation
-}
 - item.php {
     - reCaptcha (issues because we have multiple forms)
+    - mark as
 }
+
 - alert-form.php
 - search.php
 - search_gallery.php
 - search_list.php
 
-- TEST:
-    - All the forms
-    - Different browsers
+main.php, search.php {
+    - premium
+}
+
+- item-edit.php, item-post.php {
+    - js validation
+}

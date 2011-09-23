@@ -11,6 +11,7 @@
             <div class="contact">
                 <?php twitter_show_flash_message() ; ?>
             </div>
+            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="contact well">
                 <form action="<?php echo osc_base_url(true) ; ?>" method="post" name="contact" onsubmit="return doContact();">
                     <input type="hidden" name="page" value="contact" />

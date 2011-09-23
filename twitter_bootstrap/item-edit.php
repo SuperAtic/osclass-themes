@@ -35,15 +35,16 @@
             <?php twitter_show_flash_message() ; ?>
         </div>
         <div class="container item-edit">
+            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="row">
                 <div class="span16 columns">
-                    <h1><?php _e('Update your item', 'twitter_bootstrap') ; ?></h1>
                     <form class="well" name="item" action="<?php echo osc_base_url(true) ; ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="item_edit_post" />
                         <input type="hidden" name="page" value="item" />
                         <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
                         <input type="hidden" name="secret" value="<?php echo osc_item_secret() ; ?>" />
                         <fieldset>
+                            <h1><?php _e('Update your item', 'twitter_bootstrap') ; ?></h1>
                             <!-- category input -->
                             <div class="clearfix">
                                 <label><?php _e('Category', 'twitter_bootstrap') ; ?></label>
@@ -100,7 +101,9 @@
                                         <input type="file" name="photos[]" />
                                     </div>
                                     <?php } ?>
-                                    <div class="more-photos input">
+                                    <div class="more-photos">
+                                    </div>
+                                    <div class="input">
                                         <a href="javascript://" onclick="return add_photo_field();"><?php _e('Add new photo', 'modern'); ?></a>
                                     </div>
                                 </div>
