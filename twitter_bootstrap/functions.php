@@ -450,6 +450,27 @@ JAVASCRIPT;
         return $pagination->doPagination() ;
     }
 
+    /**
+     * Helper to use twitter pagination in search results
+     */
+    function twitter_search_pagination() {
+        $params = array('total'              => osc_search_total_pages(),
+                        'selected'           => osc_search_page(),
+                        'class_first'        => '',
+                        'class_last'         => '',
+                        'class_prev'         => 'prev',
+                        'class_next'         => 'next',
+                        'delimiter'          => '',
+                        'text_prev'          => sprintf(__('%s Previous', 'twitter_bootstrap'), '&larr;'),
+                        'text_next'          => sprintf(__('Next %s', 'twitter_bootstrap'), '&rarr;'),
+                        'class_selected'     => 'active',
+                        'class_non_selected' => '',
+                        'force_limits'       => false,
+                        'url'                => osc_update_search_url(array('iPage' => '{PAGE}')) ) ;
+        $pagination = new TwitterPagination($params) ;
+        return $pagination->doPagination() ;
+    }
+
     /*********************/
     /* Item form helpers */
     /*********************/
@@ -770,7 +791,7 @@ JAVASCRIPT;
             <?php
             break;
             case 1:     // one country ?>
-                        <input class="country_id" id="country_id" type="hidden" name="countryId" value="<?php echo get_country_id($item) ; ?>" />
+                        <input class="country_id" id="country_id" type="hidden" name="countryId" value="<?php echo (get_country_id($item) == "") ? $aCountries[0]['pk_c_code'] : get_country_id($item); ?>" />
             <?php
             break;
             default:    // more than one country ?>
@@ -1036,12 +1057,12 @@ JAVASCRIPT;
                 $b_location = ($b_region || $b_city);
 
                 if($b_show_all) {
-                    $text = $page_title . $separator . '<span class="bc_last">' . __('Search', 'breadcrumbs') . '</span>' ;
+                    $text = $page_title . '<li>' . __('Search', 'twitter_bootstrap') . '</li>' ;
                     break; 
                 }
 
                 // init
-                $result = $page_title . $separator;
+                $result = $page_title ;
 
                 if($b_category) {
                     $list        = array();
@@ -1049,14 +1070,14 @@ JAVASCRIPT;
                     if(count($aCategories) > 0) {
                         $deep = 1;
                         foreach ($aCategories as $single) {
-                            $list[] = '<a href="' . osc_item_category_url($single['pk_i_id']) . '"><span class="bc_level_' . $deep . '">' . $single['s_name']. '</span></a>';
+                            $list[] = '<li><a href="' . osc_item_category_url($single['pk_i_id']) . '">' . $single['s_name']. '</a>' . $separator . '</li>';
                             $deep++;
                         }
                         // remove last link
                         if( !$b_pattern && !$b_location ) {
-                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                            $list[count($list) - 1] = preg_replace('|<li><a href.*?>(.*?)</a>.*?</li>|', '$01', $list[count($list) - 1]);
                         }
-                        $result .= implode($separator, $list) . $separator;
+                        $result .= implode('', $list) ;
                     }
                 }
 
@@ -1069,34 +1090,34 @@ JAVASCRIPT;
                         $aCity = City::newInstance()->findByName($city);
                         if( count($aCity) == 0 ) {
                             $params['sCity'] = $city;
-                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_city">' . $city . '</span></a>';
+                            $list[] = '<li><a href="' . osc_search_url($params) . '">' . $city . '</a>' . $separator . '</li>';
                         } else {
                             $aRegion = Region::newInstance()->findByPrimaryKey($aCity['fk_i_region_id']);
 
                             $params['sRegion'] = $aRegion['s_name'];
-                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_region">' . $aRegion['s_name'] . '</span></a>';
+                            $list[] = '<li><a href="' . osc_search_url($params) . '">' . $aRegion['s_name'] . '</a>' . $separator . '</li>';
 
                             $params['sCity'] = $aCity['s_name'];
-                            $list[] = '<a href="' . osc_search_url($params) . '"><span class="bc_city">' . $aCity['s_name'] . '</span></a>';
+                            $list[] = '<li><a href="' . osc_search_url($params) . '">' . $aCity['s_name'] . '</a>' . $separator . '</li>';
                         }
 
                         if( !$b_pattern ) {
-                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                            $list[count($list) - 1] = preg_replace('|<li><a href.*?>(.*?)</a>.*?</li>|', '$01', $list[count($list) - 1]);
                         }
-                        $result .= implode($separator, $list) . $separator;
+                        $result .= implode('', $list) ;
                     } else if( $b_region ) {
-                        $params['sRegion'] = $region;
-                        $list[]  = '<a href="' . osc_search_url($params) . '"><span class="bc_region">' . $region . '</span></a>';
+                        $params['sRegion'] = $region ;
+                        $list[]  = '<li><a href="' . osc_search_url($params) . '">' . $region . '</a>' . $separator . '</li>';
 
                         if( !$b_pattern ) {
-                            $list[count($list) - 1] = preg_replace('|<a href.*?>(.*?)</a>|', '$01', $list[count($list) - 1]);
+                            $list[count($list) - 1] = preg_replace('|<li><a href.*?>(.*?)</a>.*?</li>|', '$01', $list[count($list) - 1]);
                         }
-                        $result .= implode($separator, $list) . $separator;
+                        $result .= implode('', $list) ;
                     }
                 }
 
                 if($b_pattern) {
-                    $result .= '<span class="bc_last">' . __('Search Results', 'breadcrumbs') . ': ' . $pattern  . '</span>'. $separator;
+                    $result .= '<li>' . __('Search Results', 'twitter_bootstrap') . ': ' . $pattern  . '</li>' ;
                 }
 
                 // remove last separator

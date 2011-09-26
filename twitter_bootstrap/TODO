@@ -3,13 +3,11 @@
     - mark as
 }
 
-- alert-form.php
-- search.php
-- search_gallery.php
-- search_list.php
-
-main.php, search.php {
-    - premium
+- search.php {
+    - improve filters
+}
+- search_gallery.php {
+    - missing
 }
 
 - item-edit.php, item-post.php {

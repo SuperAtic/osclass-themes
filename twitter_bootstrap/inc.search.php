@@ -1,6 +1,6 @@
         <!-- search bar -->
         <div class="container">
-            <div class="row search">
+            <div class="row inc-search">
                 <div class="span16 columns">
                     <form action="<?php echo osc_base_url(true) ; ?>" method="get" >
                         <input type="hidden" name="page" value="search" />

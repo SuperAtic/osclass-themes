@@ -64,7 +64,7 @@
                         </div>
                         <div class="description">
                             <h2><?php if( osc_price_enabled_at_items() ) { ?> <small><strong><?php echo osc_item_formated_price() ; ?></strong></small> &middot; <?php } ?><a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title(); ?></a> <span class="label"><a href="<?php echo osc_item_category_url(osc_item_category_id()) ; ?>"><?php echo osc_item_category() ; ?></a></span> <?php if( osc_item_is_premium() ) { ?> <span class="label success"><?php _e('Premium', 'twitter_bootstrap');  ?></span><?php } ?></h2>
-                            <p class="gray"><?php printf(__('<strong>Publish date</strong>: %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ) ) ; ?></p>
+                            <p><?php printf(__('<strong>Publish date</strong>: %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ) ) ; ?></p>
                             <?php
                                 $location = array() ;
                                 if( osc_item_country() != '' ) {
@@ -78,7 +78,7 @@
                                 }
                                 if( count($location) > 0) {
                             ?>
-                            <p class="gray"><?php echo implode(' &middot; ', $location) ; ?></p>
+                            <p><?php echo implode(' &middot; ', $location) ; ?></p>
                             <?php } ?>
                             <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
                         </div>
@@ -87,7 +87,7 @@
                     <?php if( osc_count_latest_items() == osc_max_latest_items() ) { ?>
                     <div class="row show-all-ads">
                         <div class="span12 columns">
-                            <a href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all offers", 'twitter_bootstrap') ; ?> &raquo;</strong></a>
+                            <a class="btn primary" href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all offers", 'twitter_bootstrap') ; ?> &raquo;</strong></a>
                         </div>
                     </div>
                     <?php } ?>

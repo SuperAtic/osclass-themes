@@ -8,10 +8,12 @@
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div class="container">
+            <div class="margin-top-10">
+                <?php echo twitter_breadcrumb('&raquo;') ; ?>
+            </div>
             <div class="contact">
                 <?php twitter_show_flash_message() ; ?>
             </div>
-            <?php echo twitter_breadcrumb('&raquo;') ; ?>
             <div class="contact well">
                 <form name="register" id="register" action="<?php echo osc_base_url(true) ; ?>" method="post" onsubmit="return doUserRegister();" >
                     <input type="hidden" name="page" value="register" />

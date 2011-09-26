@@ -1,81 +1,106 @@
+    
+<?php if( osc_count_items() == 0) { ?>
+    <div class="search-header span11 columns">
+        <h1><?php _e('Search results', 'twitter_bootstrap') ; ?></h1>
+    </div>
+    <div class="span11 columns">
+        <h5><?php printf(__('There are no results matching "%s"', 'twitter_bootstrap'), osc_search_pattern()) ; ?></h5>
+    </div>
+<?php } else { ?>
+<div class="search-header span11 columns">
+    <h1><?php _e('Search results', 'twitter_bootstrap') ; ?></h1>
+    <p class="filters">
+        <?php _e('Sort by', 'modern'); ?>:
+        <?php $i = 0 ; ?>
+        <?php $orders = osc_list_orders();
+        foreach($orders as $label => $params) {
+            $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
+            <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
+                <a class="current" href="<?php echo osc_update_search_url($params) ; ?>"><?php echo $label; ?></a>
+            <?php } else { ?>
+                <a href="<?php echo osc_update_search_url($params) ; ?>"><?php echo $label; ?></a>
+            <?php } ?>
+            <?php if ($i != count($orders)-1) { ?>
+                <span>&middot;</span>
+            <?php } ?>
+            <?php $i++ ; ?>
+        <?php } ?>
+    </p>
+</div>
 <?php
-    /*
-     *      OSCLass – software for creating and publishing online classified
-     *                           advertising platforms
-     *
-     *                        Copyright (C) 2010 OSCLASS
-     *
-     *       This program is free software: you can redistribute it and/or
-     *     modify it under the terms of the GNU Affero General Public License
-     *     as published by the Free Software Foundation, either version 3 of
-     *            the License, or (at your option) any later version.
-     *
-     *     This program is distributed in the hope that it will be useful, but
-     *         WITHOUT ANY WARRANTY; without even the implied warranty of
-     *        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     *             GNU Affero General Public License for more details.
-     *
-     *      You should have received a copy of the GNU Affero General Public
-     * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
-     */
-
-    osc_get_premiums();
-    if(osc_count_premiums() > 0) {
+    osc_get_premiums() ;
+    if( osc_count_premiums() > 0 ) {
 ?>
-<table border="0" cellspacing="0">
-     <tbody>
-        <?php $class = "even" ; ?>
-        <?php while(osc_has_premiums()) { ?>
-            <tr class="premium_<?php echo $class; ?>">
-                <?php if( osc_images_enabled_at_items() ) { ?>
-                 <td class="photo">
-                     <?php if(osc_count_premium_resources()) { ?>
-                        <a href="<?php echo osc_item_url() ; ?>"><img src="<?php echo osc_resource_thumbnail_url() ; ?>" width="75px" height="56px" title="" alt="" /></a>
-                    <?php } else { ?>
-                        <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" title="" alt="" />
-                    <?php } ?>
-                 </td>
-                 <?php } ?>
-                 <td class="text">
-                     <h3>
-                         <span style="float:left;"><a href="<?php echo osc_premium_url() ; ?>"><?php echo osc_premium_title() ; ?></a></span><span style="float:right;"><?php _e("Sponsored ad", "modern"); ?></span>
-                     </h3>
-                     <p style="clear: left;">
-                         <strong><?php if( osc_price_enabled_at_items() ) { echo osc_premium_formated_price() ; ?> - <?php } echo osc_premium_city(); ?> (<?php echo osc_premium_region(); ?>) - <?php echo osc_format_date(osc_premium_pub_date()); ?></strong>
-                     </p>
-                     <p><?php echo osc_highlight( strip_tags( osc_premium_description() ) ) ; ?></p>
-                 </td>
-             </tr>
-            <?php $class = ($class == 'even') ? 'odd' : 'even' ; ?>
+<?php while ( osc_has_premiums() ) { ?>
+    <div class="alert-message line span11 columns">
+        <div class="photo">
+        <?php if( osc_count_item_resources() ) { ?>
+            <a href="<?php echo osc_item_url() ; ?>">
+                <img src="<?php echo osc_resource_thumbnail_url() ; ?>" width="100px" height="75px" title="<?php echo osc_item_title(); ?>" alt="<?php echo osc_item_title(); ?>" />
+            </a>
+        <?php } else { ?>
+            <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" alt="" title=""/>
         <?php } ?>
-    </tbody>
-</table>
+        </div>
+        <div class="description">
+            <h3><?php if( osc_price_enabled_at_items() ) { ?> <small><strong><?php echo osc_item_formated_price() ; ?></strong></small> &middot; <?php } ?><a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title(); ?></a> <span class="label"><a href="<?php echo osc_item_category_url(osc_item_category_id()) ; ?>"><?php echo osc_item_category() ; ?></a></span> <?php if( osc_item_is_premium() ) { ?> <span class="label success"><?php _e('Premium', 'twitter_bootstrap');  ?></span><?php } ?></h3>
+            <p><?php printf(__('<strong>Publish date</strong>: %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ) ) ; ?></p>
+            <?php
+                $location = array() ;
+                if( osc_item_country() != '' ) {
+                    $location[] = sprintf( __('<strong>Country</strong>: %s', 'twitter_bootstrap'), osc_item_country() ) ;
+                }
+                if( osc_item_region() != '' ) {
+                    $location[] = sprintf( __('<strong>Region</strong>: %s', 'twitter_bootstrap'), osc_item_region() ) ;
+                }
+                if( osc_item_city() != '' ) {
+                    $location[] = sprintf( __('<strong>City</strong>: %s', 'twitter_bootstrap'), osc_item_city() ) ;
+                }
+
+                if( count($location) > 0) { ?>
+                    <p><?php echo implode(' &middot; ', $location) ; ?></p>
+                <?php } ?>
+            <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
+        </div>
+    </div>
+    <?php } ?>
 <?php } ?>
-<table border="0" cellspacing="0">
-    <tbody>
-        <?php $class = "even" ; ?>
-        <?php while(osc_has_items()) { ?>
-            <tr class="<?php echo $class; ?>">
-                <?php if( osc_images_enabled_at_items() ) { ?>
-                 <td class="photo">
-                     <?php if(osc_count_item_resources()) { ?>
-                        <a href="<?php echo osc_item_url() ; ?>"><img src="<?php echo osc_resource_thumbnail_url() ; ?>" width="75px" height="56px" title="" alt="" /></a>
-                    <?php } else { ?>
-                        <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" title="" alt="" />
-                    <?php } ?>
-                 </td>
-                 <?php } ?>
-                 <td class="text">
-                     <h3>
-                         <a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title() ; ?></a>
-                     </h3>
-                     <p>
-                         <strong><?php if( osc_price_enabled_at_items() ) { echo osc_item_formated_price() ; ?> - <?php } echo osc_item_city(); ?> (<?php echo osc_item_region(); ?>) - <?php echo osc_format_date(osc_item_pub_date()); ?></strong>
-                     </p>
-                     <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
-                 </td>
-             </tr>
-            <?php $class = ($class == 'even') ? 'odd' : 'even' ; ?>
-        <?php } ?>
-    </tbody>
-</table>
+    <?php while ( osc_has_items() ) { ?>
+    <div class="line span11 columns">
+        <div class="photo">
+            <?php if( osc_count_item_resources() ) { ?>
+            <a href="<?php echo osc_item_url() ; ?>">
+                <img src="<?php echo osc_resource_thumbnail_url() ; ?>" width="100px" height="75px" title="<?php echo osc_item_title(); ?>" alt="<?php echo osc_item_title(); ?>" />
+            </a>
+            <?php } else { ?>
+            <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" alt="" title=""/>
+            <?php } ?>
+        </div>
+        <div class="description">
+            <h3><?php if( osc_price_enabled_at_items() ) { ?> <small><strong><?php echo osc_item_formated_price() ; ?></strong></small> &middot; <?php } ?><a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title(); ?></a> <span class="label"><a href="<?php echo osc_item_category_url(osc_item_category_id()) ; ?>"><?php echo osc_item_category() ; ?></a></span> <?php if( osc_item_is_premium() ) { ?> <span class="label success"><?php _e('Premium', 'twitter_bootstrap');  ?></span><?php } ?></h3>
+            <p><?php printf(__('<strong>Publish date</strong>: %s', 'twitter_bootstrap'), osc_format_date( osc_item_pub_date() ) ) ; ?></p>
+            <?php
+                $location = array() ;
+                if( osc_item_country() != '' ) {
+                    $location[] = sprintf( __('<strong>Country</strong>: %s', 'twitter_bootstrap'), osc_item_country() ) ;
+                }
+                if( osc_item_region() != '' ) {
+                    $location[] = sprintf( __('<strong>Region</strong>: %s', 'twitter_bootstrap'), osc_item_region() ) ;
+                }
+                if( osc_item_city() != '' ) {
+                    $location[] = sprintf( __('<strong>City</strong>: %s', 'twitter_bootstrap'), osc_item_city() ) ;
+                }
+                if( count($location) > 0) {
+            ?>
+            <p><?php echo implode(' &middot; ', $location) ; ?></p>
+            <?php } ?>
+            <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
+        </div>
+    </div>
+    <?php } ?>
+<?php } ?>
+<div class="pagination">
+    <ul>
+        <?php echo twitter_search_pagination() ; ?>
+    </ul>
+</div>
