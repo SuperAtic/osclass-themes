@@ -67,7 +67,7 @@
                                         <?php item_price_input( ) ; ?>
                                         <?php item_currency_select( ) ; ?>
                                         <span class="help-block">
-                                            <?php _e("<strong>Note:</strong> If you are giving away your item, enter a price of 0. If you don't want to publish the price, leave empty the field", 'twitter_bootstrap') ; ?>
+                                            <?php _e("<strong>Note:</strong> If you are giving away your item, enter a price of 0. Leave it blank if you don't want to publish a price.", 'twitter_bootstrap') ; ?>
                                         </span>
                                     </div>
                                 </div>
