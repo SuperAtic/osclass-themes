@@ -165,14 +165,16 @@
     if( !function_exists('add_logo_header') ) {
         function add_logo_header() {
             $title = osc_page_title() ;
+            $url   = osc_base_url() ;
             $logo  = osc_current_web_theme_url('images/logo.jpg') ;
             $js   = <<<JAVASCRIPT
                 <script>
                     var title = '$title' ;
                     var logo  = '$logo' ;
                     var img   = $("<img>").attr('border', '0').attr('alt', '$title').attr('title', '$title').attr('src', '$logo') ;
+                    var url   = $("<a>").attr('href', '$url') ;
                     $(document).ready(function () {
-                        $('.logo').html(img) ;
+                        $('.logo').html(url.html(img));
                     });
                 </script>
 JAVASCRIPT;

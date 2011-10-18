@@ -3,7 +3,7 @@
     function twitter_bootstrap_theme_info() {
         return array(
              'name'        => 'Twitter theme'
-            ,'version'     => '1.0'
+            ,'version'     => '1.1'
             ,'description' => 'OSClass theme using twitter bootstrap'
             ,'author_name' => 'OSClass team'
             ,'author_url'  => 'http://osclass.org/'
