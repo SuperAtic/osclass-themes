@@ -17,11 +17,11 @@
             $(document).ready(function(){
                 $("a[rel=image_group]").fancybox();
                 
-                $('#item-contact').bind('click', function(event) {
+                $('#item-contact .close').bind('click', function(event) {
                     $(this).modal('hide') ;
                 }) ;
                 
-                $('#item-sendfriend').bind('click', function(event) {
+                $('#item-sendfriend .close').bind('click', function(event) {
                     $(this).modal('hide') ;
                 }) ;
             });
