@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: OSClass 2.2\n"
+"Project-Id-Version: Twitter theme 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-01 17:53+0100\n"
+"POT-Creation-Date: 2011-10-18 18:39+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Juan Ramón <juanramon@osclass.org>\n"
 "Language-Team: OSClass <info@osclass.org>\n"
@@ -15,733 +15,797 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=n !=1;\n"
 "X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SearchPath-0: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui\n"
+"X-Poedit-SearchPath-0: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap\n"
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/404.php:35
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/404.php:14
 msgid "Page not found"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/alert-form.php:6
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/alert-form.php:7
 msgid "You have sucessfully subscribed to the alert"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/alert-form.php:7
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/alert-form.php:9
 msgid "Invalid email address"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/alert-form.php:8
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/alert-form.php:11
 msgid "There was a problem with the alert"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/alert-form.php:39
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/alert-form.php:19
 msgid "Subscribe to this search"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/alert-form.php:55
-msgid "Subscribe now"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/alert-form.php:31
+msgid "Subscribe now!"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:36
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:20
 msgid "Contact us"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:42
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:22
 msgid "Subject"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:42
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:44
-msgid "optional"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:43
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:54
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:53
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:199
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:28
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:57
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:55
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:196
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:251
 msgid "Message"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:44
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:50
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:48
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:152
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:34
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:39
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:31
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:125
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:178
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:227
 msgid "Your name"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:45
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:51
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:49
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:197
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:40
 msgid "Your e-mail address"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/contact.php:47
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:56
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:157
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:219
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:52
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:64
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:208
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:263
 msgid "Send"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/footer.php:26
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:144
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:59
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:73
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:71
+msgid "This field is required"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/contact.php:60
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:74
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:72
+msgid "Enter a valid e-mail address"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/footer.php:7
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:312
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1156
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:24
 msgid "Contact"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/footer.php:31
-msgid "This website is proudly using the <a title=\"OSClass web\" href=\"http://osclass.org/\">open source classifieds</a> software <strong>OSClass</strong>"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/footer.php:8
+msgid "This website is proudly using the <a title=\"OSClass web\" href=\"http://osclass.org/\">open source classifieds</a> software <strong>OSClass</strong> and <a href=\"http://twitter.github.com/bootstrap/\">twitter bootstrap</a>"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:38
-msgid "Modern theme"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:7
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:27
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:52
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:49
+msgid "Select a category..."
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:40
-msgid "Settings theme"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:48
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:20
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:115
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:20
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:95
+msgid "Select a region..."
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:54
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:40
-msgid "Publish an item"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:55
-msgid "Edit your item"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:56
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:36
-msgid "Send to a friend"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:57
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:36
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:101
-msgid "Contact seller"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:65
-msgid "Error"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:77
-msgid "page"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:87
-msgid "Show all items"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:117
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/inc.search.php:67
-msgid "Search"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:124
-msgid "Recover your password"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:125
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:34
-msgid "Login"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:129
-msgid "Create a new account"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:133
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:104
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:301
 msgid "Dashboard"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:134
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:105
+msgid "Manage your items"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:106
+msgid "Manage your alerts"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:107
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:9
+msgid "My account"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:192
+msgid "Twitter theme"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:194
+msgid "Settings theme"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:221
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1053
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:44
+msgid "Publish an item"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:222
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1054
+msgid "Edit your item"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:223
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1055
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:21
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:223
+msgid "Send to a friend"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:224
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1056
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:21
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:82
+msgid "Contact seller"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:232
+msgid "Error"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:244
+msgid "page"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:254
+msgid "Show all items"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:284
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1078
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/inc.search.php:11
+msgid "Search"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:291
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1147
+msgid "Recover your password"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:293
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1149
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:12
+msgid "Login"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:297
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1153
+msgid "Create a new account"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:302
 msgid "Manage my items"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:135
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:303
 msgid "Manage my alerts"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:136
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:304
 msgid "Update my profile"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:137
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:305
 msgid "Change my email"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:138
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:306
 msgid "Change my password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/functions.php:139
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:307
 msgid "Recover my password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/head.php:35
-msgid "No file selected"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:424
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:445
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:466
+#, php-format
+msgid "%s Previous"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/head.php:36
-msgid "Choose File"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:425
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:446
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:467
+#, php-format
+msgid "Next %s"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:28
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/functions.php:1138
+msgid "Search Results"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:8
 #, php-format
 msgid "Hi %s"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:29
-msgid "My account"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:30
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:10
 msgid "Logout"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:35
-msgid "Register for a free account"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:13
+msgid "Register"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:40
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:107
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:186
-msgid "E-mail"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:42
-msgid "Password"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:44
-msgid "Remember me"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:45
-msgid "Log in"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:47
-msgid "Forgot password?"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:56
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:21
 msgid "Language"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/header.php:68
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/header.php:63
 msgid "Publish your ad for free"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/inc.search.php:22
-msgid "ie. PHP Programmer"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:23
+msgid "To"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/inc.search.php:65
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:52
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:50
-msgid "Select a category"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:44
-msgid "To (seller)"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:45
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:43
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:31
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:23
 msgid "Item"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:53
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:198
-msgid "Phone number"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-contact.php:56
-msgid "Send message"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:40
-msgid "Update your item"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:49
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:47
-msgid "General Information"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:51
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:49
-msgid "Category"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:59
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:58
-msgid "Price"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:67
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:65
-msgid "Photos"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:76
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:71
-msgid "Add new photo"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:81
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/main.php:121
-msgid "Location"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:83
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:78
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:77
-msgid "Country"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:87
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:82
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:78
-msgid "Region"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:91
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:86
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:79
-msgid "City"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:95
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:80
-msgid "City area"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:99
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:94
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:81
-msgid "Address"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:109
-msgid "Update"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-edit.php:110
-msgid "Cancel"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:76
-msgid "Item Location"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:90
-msgid "City Area"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:101
-msgid "Seller's information"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:103
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:184
-msgid "Name"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:114
-msgid "Show e-mail on the item page"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-post.php:128
-msgid "Publish"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:51
-msgid "Your friend's name"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item-send-friend.php:52
-msgid "Your friend's e-mail address"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:37
-msgid "Image"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:59
-msgid "Mark as"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:61
-msgid "spam"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:62
-msgid "misclassified"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:63
-msgid "duplicated"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:64
-msgid "expired"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:65
-msgid "offensive"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:73
-msgid "Published date"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:74
-msgid "Modified date"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:104
-msgid "Share"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:110
-msgid "Useful information"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:112
-msgid "Avoid scams by acting locally or paying with PayPal"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:113
-msgid "Never pay with Western Union, Moneygram or other anonymous payment services"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:114
-msgid "Don't buy or sell outside of your country. Don't accept cashier cheques from outside your country"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:115
-msgid "This site is never involved in any transaction, and does not handle payments, shipping, guarantee transactions, provide escrow services, or offer \"buyer protection\" or \"seller certification\""
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:121
-msgid "Comments"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:128
-msgid "by"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:132
-msgid "Delete your comment"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:132
-msgid "Delete"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:144
-msgid "Leave your comment (spam and offensive messages will be removed)"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:153
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:45
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:37
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:131
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:184
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:233
 msgid "Your e-mail"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:155
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:51
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:190
+msgid "Phone number"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-contact.php:66
+msgid "Send message"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:9
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:9
+msgid "Select a subcategory..."
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:13
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:13
+msgid "Remove"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:14
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:14
+msgid "Sorry, you have reached the maximum number of images per ad"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:19
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:114
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:19
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:94
+msgid "Select a country..."
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:21
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:116
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:21
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:96
+msgid "Select a city..."
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:22
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:22
+msgid "No regions available"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:23
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:23
+msgid "No cities available"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:26
+msgid "This action cannot be undone. Are you sure you want to continue?"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:47
+msgid "Update your item"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:50
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:47
+msgid "Category"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:59
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:61
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:56
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:58
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:137
 msgid "Title"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:156
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:59
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:61
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:56
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:58
+msgid "Description"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:68
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:65
+msgid "Price"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:73
+msgid "<strong>Note:</strong> If you are giving away your item, enter a price of 0. If you don't want to publish the price, leave empty the field"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:81
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:78
+msgid "Photos"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:93
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:102
+msgid "Delete"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:107
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:87
+msgid "Add new photo"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:113
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:93
+msgid "Location"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:114
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:94
+msgid "Country"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:115
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:95
+msgid "Region"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:116
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:96
+msgid "City"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:118
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:98
+msgid "Neighborhood"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:124
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:104
+msgid "Address"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:139
+msgid "Update"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-edit.php:140
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:209
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:264
+msgid "Cancel"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:70
+msgid "<strong>Note:</strong> If you are giving away your item, enter a price of 0. Leave it blank if you don't want to publish a price."
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:112
+msgid "Seller's information"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:114
+msgid "Name"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:120
+msgid "E-mail"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:131
+msgid "Show e-mail on the item page"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-post.php:148
+msgid "Publish your ad"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:43
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:239
+msgid "Your friend's name"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item-send-friend.php:49
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:245
+msgid "Your friend's e-mail"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:48
+#, php-format
+msgid "<strong>Published date:</strong> %s %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:50
+#, php-format
+msgid "<strong>Modified date:</strong> %s %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:54
+#, php-format
+msgid "<strong>Location:</strong> %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:84
+msgid "Share"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:93
+msgid "Comments"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:98
+msgid "by"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:102
+msgid "Delete your comment"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:123
+msgid "Leave your comment"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:143
 msgid "Comment"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:183
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:154
+msgid "Post comment"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/item.php:173
 msgid "Contact publisher"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:189
-msgid "Tel"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:19
+msgid "Pages"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:196
-msgid "Your name (optional)"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:35
+msgid "Regions"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:213
-msgid "Enter the words above"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/item.php:215
-msgid "Help"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/main.php:81
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:48
 msgid "Latest Items"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/main.php:83
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:51
 msgid "No Latest Items"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/main.php:112
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:66
+msgid "Premium"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:67
+#, php-format
+msgid "<strong>Publish date</strong>: %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:71
+#, php-format
+msgid "<strong>Country</strong>: %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:74
+#, php-format
+msgid "<strong>Region</strong>: %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:77
+#, php-format
+msgid "<strong>City</strong>: %s"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/main.php:90
 msgid "See all offers"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:44
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search.php:26
+msgid "Your search"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search.php:43
+msgid "Categories"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search.php:89
+msgid "Apply"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_gallery.php:4
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_gallery.php:11
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_list.php:4
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_list.php:11
 msgid "Search results"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:47
-msgid "Sort by"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:66
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_gallery.php:7
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_list.php:7
 #, php-format
 msgid "There are no results matching \"%s\""
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:80
-msgid "Your search"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_gallery.php:13
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/search_list.php:13
+msgid "Sort by"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:93
-msgid "Show only"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:98
-msgid "Show only items with pictures"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:106
-msgid "Min"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:108
-msgid "Max"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:137
-msgid "Apply"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:154
-msgid "Selected"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search.php:155
-msgid "Nothing selected, input was"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search_gallery.php:40
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/search_list.php:40
-msgid "Sponsored ad"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:34
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_email.php:35
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_password.php:35
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:35
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:35
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:35
-msgid "User account manager"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:39
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-alerts.php:15
 msgid "Your alerts"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:41
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-alerts.php:21
 msgid "You do not have any alerts yet"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:45
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-alerts.php:28
 msgid "Alert"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:45
-msgid "This action can't be undone. Are you sure you want to continue?"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-alerts.php:28
+msgid "This action can\\'t be undone. Are you sure you want to continue?"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:45
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-alerts.php:28
 msgid "Delete this alert"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-alerts.php:51
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:51
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:51
-msgid "Publication date"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_email.php:41
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_email.php:19
 msgid "Change your e-mail"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_email.php:47
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_email.php:21
 msgid "Current e-mail"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_email.php:51
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_email.php:27
 msgid "New e-mail"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_password.php:41
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_password.php:19
 msgid "Change your password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_password.php:47
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_password.php:21
 msgid "Current password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_password.php:51
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_password.php:27
 msgid "New password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-change_password.php:55
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-change_password.php:33
 msgid "Repeat new password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:41
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-dashboard.php:15
 #, php-format
-msgid "Items from %s"
+msgid "Latest items of %s"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:43
-msgid "No items have been added yet"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:55
-msgid "View item"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:57
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:55
-msgid "Edit"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-dashboard.php:60
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:60
-msgid "Activate"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-forgot_password.php:43
-msgid "New pasword"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-forgot_password.php:47
-msgid "Repeat new pasword"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-forgot_password.php:50
-msgid "Change password"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:41
-msgid "Your items"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:41
-msgid "Post a new item"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:43
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-dashboard.php:21
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-items.php:21
 msgid "You don't have any items yet"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-items.php:57
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-dashboard.php:47
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-items.php:47
+msgid "Edit"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-dashboard.php:49
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-items.php:49
 msgid "This action can not be undone. Are you sure you want to continue?"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-login.php:35
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-dashboard.php:52
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-items.php:52
+msgid "Activate"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-forgot_password.php:26
+msgid "New pasword"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-forgot_password.php:32
+msgid "Repeat new pasword"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-forgot_password.php:38
+msgid "Change password"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-items.php:15
+msgid "Your items"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:22
 msgid "Access to your account"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:41
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:30
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-register.php:30
+msgid "Password"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:41
+msgid "Remember me"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:48
+msgid "Log in"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:52
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-recover.php:37
+msgid "Register for a free account"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-login.php:52
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-register.php:56
+msgid "Forgot password?"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:19
 msgid "Update your profile"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:55
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:31
 msgid "Modify e-mail"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:55
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:31
 msgid "Modify password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:59
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:36
 msgid "User type"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:63
-msgid "Cell phone"
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:39
+msgid "User"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:67
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:40
+msgid "Company"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:45
+msgid "Mobile phone"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:51
 msgid "Phone"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-profile.php:91
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:75
+msgid "City area"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-profile.php:87
 msgid "Website"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-recover.php:42
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-recover.php:33
 msgid "Send me a new password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-register.php:36
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-register.php:22
 msgid "Register an account for free"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-register.php:45
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-register.php:36
 msgid "Re-type password"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-register.php:47
-msgid "Passwords don't match"
-msgstr ""
-
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/user-register.php:51
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/user-register.php:52
 msgid "Create"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:34
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:8
+msgid "The logo image has been uploaded correctly"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:10
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:13
+msgid "An error has occurred, please try again"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:19
+msgid "The logo image has been removed"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:21
+msgid "Image not found"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:34
 msgid "The preferred size of the logo is 600x100"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:36
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:36
 msgid "Note: Uploading another logo will overwrite current logo"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:43
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:42
 msgid "Logo image"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:46
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:45
 msgid "Upload"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:55
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:50
+msgid "Preview"
+msgstr ""
+
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:54
 msgid "Remove logo"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:59
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:58
 msgid "Has not uploaded any logo image"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:69
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:66
 #, php-format
 msgid "The images folder %s is not writable on your server"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:70
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:67
 msgid "OSClass can't upload logo image from the administration panel"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:71
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:68
 msgid "Please make the mentioned images folder writable"
 msgstr ""
 
-#: /Users/juanramon/htdocs/osclass-git/oc-includes/osclass/gui/admin/admin_settings.php:76
+#: /Users/juanramon/htdocs/osclass-themes-git/twitter_bootstrap/admin/admin_settings.php:73
 msgid "To make a directory writable under UNIX execute this command from the shell"
 msgstr ""
 
