@@ -704,16 +704,32 @@ JAVASCRIPT;
         return $item['f_price'] ;
     }
     
-    function item_currency_select() { ?>
-        <?php $aCurrencies = osc_get_currencies(); ?>
+    function item_currency_select() {
+        $item = (osc_item() != null) ? osc_item() : array() ;
+        $aCurrencies = osc_get_currencies() ;
+        $currencySelected = get_item_currency($item) ; ?>
         <select class="medium" id="currency" name="currency">
             <?php foreach($aCurrencies as $currency) { ?>
-                <option value="<?php echo $currency['pk_c_code'] ; ?>"><?php echo $currency['s_description'] ; ?></option>
+                <option value="<?php echo $currency['pk_c_code'] ; ?>" <?php echo ($currencySelected == $currency['pk_c_code']) ? 'selected="selected"' : '' ?>><?php echo $currency['s_description'] ; ?></option>
             <?php } ?>
         </select>
         <?php
     }
     
+    function get_item_currency($item) {
+        $currencyFromSession = Session::newInstance()->_getForm('currency') ;
+
+        if( count($item) == 0 && $currencyFromSession == '' ) {
+            return osc_currency() ;
+        }
+
+        if( $currencyFromSession != '' ) {
+            return $currencyFromSession ;
+        }
+
+        return $item['fk_c_currency_code'] ;
+    }
+
     function item_contact_name_input() { ?>
         <?php $item = (osc_item() != null) ? osc_item() : array() ; ?>
         <input type="text" id="contactName" class="large" name="contactName" value="<?php echo get_item_contact_name($item) ; ?>">
