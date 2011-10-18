@@ -45,8 +45,8 @@
         View::newInstance()->_exportVariableToView('list_regions', Search::newInstance()->listRegions('%%%%', '>=', 'region_name ASC') ) ;
         
         if( osc_count_list_regions() > 0 ) {
-            echo '<select name="sRegion" style="width: 200px;" class="chzn-select"">' ;
-            echo '<option>' . __('Select a region...', 'twitter_bootstrap') . '</option>' ;
+            echo '<select name="sRegion" data-placeholder="' . __('Select a region...', 'twitter_bootstrap') . '" style="width: 200px;" class="chzn-select"">' ;
+            echo '<option></option>' ;
             while( osc_has_list_regions() ) {
                 echo '<option value="' . osc_list_region_name() . '">' . osc_list_region_name() . '</option>' ;
             }
