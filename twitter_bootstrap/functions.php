@@ -809,7 +809,7 @@ JAVASCRIPT;
             <?php
             break;
             case 1:     // one country ?>
-                        <input class="country_id" id="country_id" type="hidden" name="countryId" value="<?php echo (get_country_id($item) == "") ? $aCountries[0]['pk_c_code'] : get_country_id($item); ?>" />
+                        <input class="country_id" id="country_id" type="hidden" name="countryId" value="<?php echo get_country_id($item) ; ?>" />
             <?php
             break;
             default:    // more than one country ?>
@@ -845,7 +845,12 @@ JAVASCRIPT;
     
     function get_country_id($item) {
         $country_id = "" ;
-        
+        $aCountries = osc_get_countries() ;
+
+        if( count($aCountries) == 1 ) {
+            $country_id = $aCountries[0]['pk_c_code'] ;
+        }
+
         if( array_key_exists('fk_c_country_code', $item) ) {
             $country_id = $item['fk_c_country_code'] ;
         }
@@ -908,7 +913,12 @@ JAVASCRIPT;
     
     function get_region_id($item) {
         $region_id = "" ;
-        
+        $aRegions  = osc_get_regions() ;
+
+        if( count($aRegions) == 1 ) {
+            $region_id = $aRegions[0]['pk_i_id'] ;
+        }
+
         if( array_key_exists('fk_i_region_id', $item) ) {
             $region_id = $item['fk_i_region_id'] ;
         }

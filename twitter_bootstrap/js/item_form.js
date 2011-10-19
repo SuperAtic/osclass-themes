@@ -88,12 +88,47 @@ function ajax_country (input) {
 				if( is_loading && twitter_theme.region_select_id != "" ) {
 					$("select.region_id").val(twitter_theme.region_select_id) ;
 					$("select.region_id").trigger('change') ;
+					if( $("select.region_id").length == 0 ) {
+						console.log('region_id hidden') ;
+						ajax_region($("input.region_id")) ;
+					}
 				}
 			}
 		}) ;
 	} else {
 		$("select.region_id").attr('disabled', true) ;
 		$("select.region_id").html($("<option>").html(twitter_theme.text_select_region)) ;
+		$("select.city_id").attr('disabled', true) ;
+		$("select.city_id").html($("<option>").html(twitter_theme.text_select_city)) ;
+	}
+}
+
+function ajax_region (input) {
+	var region_code = $(input).attr('value') ;
+	console.log("region_code: " + region_code) ;
+	if(region_code != "") {
+		$.ajax({
+			type: "POST",
+			url: twitter_theme.ajax_url,
+			dataType: "json",
+			data: {  action: "cities", regionId: region_code },
+			success: function(data) {
+				if( data.length > 0 ) {
+					$("select.city_id").html($("<option>").html(twitter_theme.text_select_city)) ;
+					$.each(data, function(key, value){
+						$("select.city_id").append( $("<option>").attr('value', value.pk_i_id).html(value.s_name) ) ;
+					}) ;
+					$("select.city_id").attr('disabled', false) ;
+					if( is_loading ) {
+						$("select.city_id").val(twitter_theme.city_select_id) ;
+					}
+				} else {
+					$("select.city_id").html($("<option>").html(twitter_theme.text_no_cities)) ;
+				}
+				is_loading = false;
+			}
+		}) ;
+	} else {
 		$("select.city_id").attr('disabled', true) ;
 		$("select.city_id").html($("<option>").html(twitter_theme.text_select_city)) ;
 	}
@@ -127,34 +162,7 @@ $(document).ready(function() {
 	}) ;
 
 	$("select.region_id").bind('change', function(event) {
-		var region_code = $(this).attr('value') ;
-		console.log("region_code: " + region_code) ;
-		if(region_code != "") {
-			$.ajax({
-				type: "POST",
-				url: twitter_theme.ajax_url,
-				dataType: "json",
-				data: {  action: "cities", regionId: region_code },
-				success: function(data) {
-					if( data.length > 0 ) {
-						$("select.city_id").html($("<option>").html(twitter_theme.text_select_city)) ;
-						$.each(data, function(key, value){
-							$("select.city_id").append( $("<option>").attr('value', value.pk_i_id).html(value.s_name) ) ;
-						}) ;
-						$("select.city_id").attr('disabled', false) ;
-						if( is_loading ) {
-							$("select.city_id").val(twitter_theme.city_select_id) ;
-						}
-					} else {
-						$("select.city_id").html($("<option>").html(twitter_theme.text_no_cities)) ;
-					}
-					is_loading = false;
-				}
-			}) ;
-		} else {
-			$("select.city_id").attr('disabled', true) ;
-			$("select.city_id").html($("<option>").html(twitter_theme.text_select_city)) ;
-		}
+		ajax_region( $(this) ) ;
 	}) ;
 
 	$("select.country_id").trigger('change') ;
