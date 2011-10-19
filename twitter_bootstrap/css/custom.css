@@ -4,8 +4,8 @@
 p.no-margin { margin: 0px; }
 .label a { color: white; }
 /* HEADER */
-div.topbar-wrapper { position: relative; height: 40px; margin: 5px 0 0; }
-div.topbar-wrapper div.topbar { position: absolute; margin: 0 -20px; }
+div.topbar-wrapper { position: static; margin: 5px 0 0; }
+div.topbar-wrapper div.topbar { position: static; margin: 0 -20px; height: inherit; }
 div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
 .logo h3 { font-size: 4em; margin-bottom: 10px; }
 .logo h3 a, .logo h3:hover { text-decoration: none; color: #404040; }
