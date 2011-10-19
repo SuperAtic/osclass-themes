@@ -32,12 +32,11 @@ div.topbar-wrapper div.topbar .fill { padding-left: 20px; padding-right: 20px; -
 	box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 .topbar div > ul .menu-dropdown, .nav .menu-dropdown, .topbar div > ul .dropdown-menu, .nav .dropdown-menu { 
+	background: #2cabe6; 
 	background-color: #2b92c2; 
 	z-index: 1; 
 }
 .topbar a, .topbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .topbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a { 
-	background: #2cabe6; 
-	background-color: #2cabe6;
 	color: white; 
 }
 .topbar div>ul .menu-dropdown li a:hover,.nav .menu-dropdown li a:hover,.topbar div>ul .dropdown-menu li a:hover,.nav .dropdown-menu li a:hover { 
