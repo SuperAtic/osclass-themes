@@ -46,7 +46,9 @@
                             <?php osc_run_hook('user_register_form') ; ?>
                         </div>
                         <div class="clearfix">
-                            <?php osc_show_recaptcha(); ?>
+                            <div class="input">
+                                <?php osc_show_recaptcha(); ?>
+                            </div>
                         </div>
                         <div class="actions">                            
                             <button class="btn" type="submit"><?php _e('Send', 'twitter_bootstrap') ; ?></button>
