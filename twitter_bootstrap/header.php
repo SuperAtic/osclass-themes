@@ -31,11 +31,17 @@
                 <?php } ?>
             </div>
             <div class="logo">
+                <?php if( file_exists( WebThemes::newInstance()->getCurrentThemePath() . "images/logo.jpg" ) ) { ?>
+                    <a href="<?php echo osc_base_url() ; ?>">
+                        <img src="<?php echo osc_current_web_theme_url('images/logo.jpg') ; ?>" alt="<?php echo osc_page_title() ; ?>" title="<?php echo osc_page_title() ; ?>" />
+                    </a>
+                <?php } else { ?>
                 <div class="row">
                     <div class="span16 columns">
                         <h3><a href="<?php echo osc_base_url() ; ?>"><?php echo osc_page_title() ; ?></a></h3>
                     </div>
                 </div>
+                <?php } ?>
             </div>
             <div class="topbar-wrapper" style="z-index: 5;">
                 <div class="topbar">

@@ -162,31 +162,6 @@
         }
     }
 
-    if( !function_exists('add_logo_header') ) {
-        function add_logo_header() {
-            $title = osc_page_title() ;
-            $url   = osc_base_url() ;
-            $logo  = osc_current_web_theme_url('images/logo.jpg') ;
-            $js   = <<<JAVASCRIPT
-                <script>
-                    var title = '$title' ;
-                    var logo  = '$logo' ;
-                    var img   = $("<img>").attr('border', '0').attr('alt', '$title').attr('title', '$title').attr('src', '$logo') ;
-                    var url   = $("<a>").attr('href', '$url') ;
-                    $(document).ready(function () {
-                        $('.logo').html(url.html(img));
-                    });
-                </script>
-JAVASCRIPT;
-
-             if( file_exists( WebThemes::newInstance()->getCurrentThemePath() . "images/logo.jpg" ) ) {
-                echo $js ;
-             }
-        }
-
-        osc_add_hook("header", "add_logo_header") ;
-    }
-
     if( !function_exists('twitter_admin_menu') ) {
         function twitter_admin_menu() {
             echo '<h3><a href="#">' . __('Twitter theme','twitter_bootstrap') . '</a></h3>
