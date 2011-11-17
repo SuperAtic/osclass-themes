@@ -78,11 +78,13 @@
                                 </div>
                             </div>
                             <?php ItemForm::plugin_edit_item(); ?>
+                            <?php if( osc_recaptcha_items_enabled() ) { ?>
                             <div class="box">
                                 <div class="row">
-                                    <?php osc_show_recaptcha(); ?>
+                                    <?php osc_show_recaptcha() ; ?>
                                 </div>
                             </div>
+                            <?php } ?>
                             <button class="itemFormButton" type="submit"><?php _e('Update', 'bcute') ; ?></button>
                             <a href="javascript:history.back(-1)" class="go_back"><?php _e('Cancel', 'bcute') ; ?></a>
                         </fieldset>
